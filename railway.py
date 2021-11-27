@@ -18,17 +18,17 @@ ScreenManager:
 <Main>:
     name: "main"
     MDFloatLayout:
-        md_bg_color: 255/255,98/255,67/255,1
+        md_bg_color: 189/255,219/255,255/255,1
     MDCard:
         size_hint: (.4,.8)
         pos_hint: {"center_x": .5, "center_y": .5}
-        md_bg_color: 189/255,219/255,255/255,1
-        elevation: 13
+        md_bg_color: 1,1,1,1
+        elevation: 16
         radius: [20,20,20,20]
         Image:
             source: "D:\dtrain.png"
             size_hint: .26, .26
-            pos_hint: {"center_x": .5, "center_y": .7}
+            pos_hint: {"center_x": .5, "center_y": .73}
             canvas.before:
                 Color:
                     rgb: 1,1,1,1
@@ -40,23 +40,28 @@ ScreenManager:
         text: "Railway Reservation"
         font_name: "BPoppins"
         font_size: "35sp"
-        pos_hint: {"center_y": .43}
+        pos_hint: {"center_y": .48}
         halign: "center"
         color: rgba(0,0,0,255)
     MDLabel:
         text: "System"
         font_name: "BPoppins"
         font_size: "35sp"
-        pos_hint: {"center_y": .38}
+        pos_hint: {"center_y": .43}
         halign: "center"
         color: rgba(0,0,0,255)
     MDFillRoundFlatButton:
         text :"LOGIN"
-        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        pos_hint: {"center_x": 0.5, "center_y": 0.33}
         font_size: "20sp"
-        size_hint: .075, .065
+        size_hint: .080, .065
         font_name: "BPoppins"
-
+    MDRoundFlatButton:
+        text :"SIGN UP"
+        pos_hint: {"center_x": 0.5, "center_y": 0.25}
+        font_size: "20sp"
+        size_hint: .080, .065
+        font_name: "BPoppins"
 
 
 """
