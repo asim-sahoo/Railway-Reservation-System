@@ -1,14 +1,16 @@
 from kivy.core.text import LabelBase
+from kivy.uix.behaviors import button
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.widget import Widget
 from kivymd.app import MDApp
 from kivy.app import App
+from kivymd.uix.button import MDFloatingActionButton
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
-from kivy.core.window import Window
+from kivy.core.window import Animation, Window
 from kivy.uix.screenmanager import Screen
-from kivymd.uix.button import MDFillRoundFlatButton
+from kivymd.uix.button import MDFillRoundFlatButton, MDRaisedButton
 from kivy.uix.image import Image
 
 Window.size = (1920,1080)
@@ -21,14 +23,44 @@ ScreenManager:
 <Home>:
     name: "home"
     Image:
-        source: "bg5.png"
-        size_hint: 1.1, 1.1
+        source: "w3.gif"
+        size_hint: 1, 1
         pos_hint: {"center_x": .5, "center_y": .5}
+        anim_delay: 0.04
+        anim_loop: 0
+        allow_stretch: True
+        keep_ratio: False
+    MDCard:
+        size_hint: (.4,.7)
+        pos_hint: {"center_x": .5, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 20
+        radius: [35,35,35,35]
+        padding: 0
+    
+    Image:
+        source: "train.png"
+        size_hint: .26, .26
+        pos_hint: {"center_x": .5, "center_y": .65}
+    MDLabel:
+        text: "RAILWAY RESERVATION SYSTEM"
+        font_name: "TPoppins"
+        font_size: "33sp"
+        pos_hint: {"center_x": .5, "center_y": .45}
+        halign: "center"
+        color: rgba(0,0,0,255)
+    MDLabel:
+        text: "Book Tickets Easily"
+        font_name: "SPoppins"
+        font_size: "28sp"
+        pos_hint: {"center_x": .5, "center_y": .4}
+        halign: "center"
+        color: rgba(0,0,0,255)
     MDFillRoundFlatButton:
         text :"PROCEED"
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        pos_hint: {"center_x": 0.5, "center_y": 0.27}
         font_size: "20sp"
-        size_hint: .28, .065
+        size_hint: .20, .065
         font_name: "BPoppins"
         on_press: root.manager.current = 'main'
 <Main>:
@@ -47,7 +79,7 @@ ScreenManager:
         elevation: 20
         radius: [40,40,40,40]
         Image:
-            source: "D:\dtrain.png"
+            source: "train.png"
             size_hint: .26, .26
             pos_hint: {"center_x": .5, "center_y": .73}
            
@@ -82,7 +114,7 @@ ScreenManager:
 <Login>:
     name: "login"
     Image:
-        source: "bg4.png"
+        source: "bg5.png"
         size_hint: 1.1, 1.1
         pos_hint: {"center_x": .5, "center_y": .5}
     MDCard:
@@ -91,9 +123,8 @@ ScreenManager:
         md_bg_color: 1,1,1,1
         elevation: 20
         radius: [35,35,35,35]
-        padding: 0
         #Image:
-            #source: "lbg.jpg"
+            #source: "train.png"
             #size_hint: .9, .9
             #pos_hint: {"center_x": .05, "center_y": .5}
     
@@ -109,19 +140,29 @@ class Login(Screen):
     pass
 
 sm = ScreenManager()
+sm.add_widget(Main(name='home'))
 sm.add_widget(Main(name='main'))
 sm.add_widget(Login(name='login'))
 class Railway(MDApp):
     def show(self):
-        d = MDDialog(text="Hello")
-        d.open()    
+        #close = MDRaisedButton(text="OK", on_release=self.dialog_close)
+        self.d = MDDialog(title="COVID 19 Alert:",text="\u2022 Passengers are advised to wear a mask, carry sanitizer, and follow social distancing norms\n\n\u2022 All Passenger to kindly note that on arrival at their destination, the traveling passengers will have to adhere to such health protocols as are prescribed by the destination State/UT.For other states, State Govt websites may be visited to ascertain the same.\n\n\u2022 No blanket and linen shall be provided in the train. Although Take Away Bedroll Kit is available in some trains on payment basis.",radius=[20,20,20,20])
+        self.d.open()
+    #def dialog_close(self, obj):
+        #self.dialog.dismiss()
+        #self.manager.current = 'main'    
     def build(self):
 
         screen = Builder.load_string(helper)
         return screen
+    def bt(self, widget):
+        anim = Animation(opacity=0, duration=2)
+        anim += Animation(opacity=1)
+        anim.start(widget)
     
-
 if __name__ == "__main__":
     LabelBase.register(name="MPoppins", fn_regular="Poppins-Bold.ttf")
     LabelBase.register(name="BPoppins", fn_regular="Poppins-Medium.ttf")
+    LabelBase.register(name="TPoppins", fn_regular="Poppins-Black.ttf")
+    LabelBase.register(name="SPoppins", fn_regular="Poppins-Regular.ttf")
     Railway().run()
