@@ -12,6 +12,9 @@ from kivy.core.window import Animation, Window
 from kivy.uix.screenmanager import Screen
 from kivymd.uix.button import MDFillRoundFlatButton, MDRaisedButton
 from kivy.uix.image import Image
+from kivymd.uix.behaviors import FakeRectangularElevationBehavior
+from kivymd.uix.floatlayout import MDFloatLayout
+
 
 Window.size = (1920,1080)
 
@@ -127,9 +130,60 @@ ScreenManager:
             #source: "train.png"
             #size_hint: .9, .9
             #pos_hint: {"center_x": .05, "center_y": .5}
-    
+    UserName:
+        size_hint: .25,.09
+        pos_hint: {"center_x": .35, "center_y": .55}
+        md_bg_color: 1,1,1,1
+        elevation: 10
+        radius: [15]
+        Image:
+            source: "user.png"
+            size_hint: .4,.4
+            pos_hint: {"center_x": .9, "center_y": .48}
+        TextInput:
+            hint_text: "Username"
+            size_hint: .8, None
+            pos_hint: {"center_x": .41, "center_y": .4}
+            height: self.minimum_height
+            cursor_color: 0,0,0,1
+            cursor_width: "2sp"
+            multiline: False
+            background_color: 0,0,0,0
+            padding: 15
+            font_name: "MPoppins"
+            font_size: "14sp"
+            hint_text_color: rgba(160, 231, 232,255)
+    Password:
+        size_hint: .25,.09
+        pos_hint: {"center_x": .35, "center_y": .45}
+        md_bg_color: 1,1,1,1
+        elevation: 10
+        radius: [15]
+        Image:
+            source: "key.png"
+            size_hint: .4,.4
+            pos_hint: {"center_x": .9, "center_y": .48}
+        TextInput:
+            hint_text: "Password"
+            size_hint: .78, None
+            pos_hint: {"center_x": .41, "center_y": .4}
+            height: self.minimum_height
+            cursor_color: 0,0,0,1
+            cursor_width: "2sp"
+            multiline: False
+            background_color: 0,0,0,0
+            padding: 15
+            font_name: "MPoppins"
+            font_size: "14sp"
+            hint_text_color: rgba(160, 231, 232,255)
     
 """
+
+class UserName(FakeRectangularElevationBehavior, MDFloatLayout):
+    pass
+
+class Password(FakeRectangularElevationBehavior, MDFloatLayout):
+    pass
 class Home(Screen):
     pass
 
@@ -152,13 +206,8 @@ class Railway(MDApp):
         #self.dialog.dismiss()
         #self.manager.current = 'main'    
     def build(self):
-
         screen = Builder.load_string(helper)
         return screen
-    def bt(self, widget):
-        anim = Animation(opacity=0, duration=2)
-        anim += Animation(opacity=1)
-        anim.start(widget)
     
 if __name__ == "__main__":
     LabelBase.register(name="MPoppins", fn_regular="Poppins-Bold.ttf")
