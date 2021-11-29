@@ -134,7 +134,7 @@ ScreenManager:
         size_hint: .25,.09
         pos_hint: {"center_x": .35, "center_y": .55}
         md_bg_color: 1,1,1,1
-        elevation: 10
+        elevation: 17
         radius: [15]
         Image:
             source: "user.png"
@@ -143,21 +143,21 @@ ScreenManager:
         TextInput:
             hint_text: "Username"
             size_hint: .8, None
-            pos_hint: {"center_x": .41, "center_y": .4}
+            pos_hint: {"center_x": .41, "center_y": .41}
             height: self.minimum_height
             cursor_color: 0,0,0,1
             cursor_width: "2sp"
             multiline: False
             background_color: 0,0,0,0
             padding: 15
-            font_name: "MPoppins"
+            font_name: "SPoppins"
             font_size: "14sp"
-            hint_text_color: rgba(160, 231, 232,255)
+            hint_text_color: rgba(3, 144, 252,255)
     Password:
         size_hint: .25,.09
-        pos_hint: {"center_x": .35, "center_y": .45}
+        pos_hint: {"center_x": .35, "center_y": .43}
         md_bg_color: 1,1,1,1
-        elevation: 10
+        elevation: 17
         radius: [15]
         Image:
             source: "key.png"
@@ -166,16 +166,16 @@ ScreenManager:
         TextInput:
             hint_text: "Password"
             size_hint: .78, None
-            pos_hint: {"center_x": .41, "center_y": .4}
+            pos_hint: {"center_x": .41, "center_y": .41}
             height: self.minimum_height
             cursor_color: 0,0,0,1
             cursor_width: "2sp"
             multiline: False
             background_color: 0,0,0,0
             padding: 15
-            font_name: "MPoppins"
+            font_name: "SPoppins"
             font_size: "14sp"
-            hint_text_color: rgba(160, 231, 232,255)
+            hint_text_color: rgba(3, 144, 252,255)
     
 """
 
