@@ -19,5 +19,8 @@ class LoginScreen1(MDScreen):
 class LoginScreen2(MDScreen):
     pass
 
+class LoginScreen3(MDScreen):
+    pass
+
 class MainScreenManager(ScreenManager):
     pass

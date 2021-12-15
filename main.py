@@ -19,6 +19,7 @@ class LiveApp(MDApp, App):
         os.path.join(os.getcwd(), "screens/login_screen/loginscreen.kv"),
         os.path.join(os.getcwd(), "screens/login_screen/loginscreen1.kv"),
         os.path.join(os.getcwd(), "screens/login_screen/loginscreen2.kv"),
+        os.path.join(os.getcwd(), "screens/login_screen/loginscreen3.kv"),
     }
 
     # class to watch from *.py files
@@ -27,6 +28,7 @@ class LiveApp(MDApp, App):
         "LoginScreen": "screens.screenmanager",
         "LoginScreen1": "screens.screenmanager",
         "LoginScreen2": "screens.screenmanager",
+        "LoginScreen3": "screens.screenmanager",
     }
 
     # auto reload path
@@ -51,4 +53,5 @@ if __name__ == "__main__":
     LabelBase.register(name="SPoppins", fn_regular="Poppins-Regular.ttf")
     LabelBase.register(name="BPoppins", fn_regular="Poppins-Medium.ttf")
     LabelBase.register(name="MPoppins", fn_regular="Poppins-Bold.ttf")
+    LabelBase.register(name="LPoppins", fn_regular="Poppins-Light.ttf")
     LiveApp().run()
