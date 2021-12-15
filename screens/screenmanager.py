@@ -6,5 +6,8 @@ sm = ScreenManager()
 class LoginScreen(MDScreen):
     pass
 
+class LoginScreen1(MDScreen):
+    pass
+
 class MainScreenManager(ScreenManager):
     pass

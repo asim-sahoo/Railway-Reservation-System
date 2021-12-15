@@ -1,0 +1,27 @@
+<LoginScreen1>
+    
+    name: "loginscreen1" 
+    on_enter: app.show()
+    Image:
+        source: "bg5.png"
+        size_hint: 1.1, 1.1
+        pos_hint: {"center_x": .5, "center_y": .5}
+    
+    MDCard:
+        size_hint: (.4,.8)
+        pos_hint: {"center_x": .27, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 20
+        radius: [40,40,40,40]
+        Image:
+            source: "train.png"
+            size_hint: .26, .26
+            pos_hint: {"center_x": .5, "center_y": .73}
+    MDLabel:
+        text: "Railway Reservation"
+        font_name: "BPoppins"
+        font_size: "40sp"
+        pos_hint: {"center_x": .27, "center_y": .495}
+        halign: "center"
+        color: rgba(0,0,0,255)
+    

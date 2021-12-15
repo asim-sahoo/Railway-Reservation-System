@@ -1,6 +1,6 @@
 <LoginScreen>
     Image:
-        source: "E:\\Railway-Reservation-System test\\screens\\w3.gif"
+        source: "w3.gif"
         size_hint: 1, 1
         pos_hint: {"center_x": .5, "center_y": .5}
         anim_delay: 0.04
@@ -15,7 +15,7 @@
         radius: [35,35,35,35]
         padding: 0
     Image:
-        source: "E:\\Railway-Reservation-System test\\screens\\train.png"
+        source: "train.png"
         size_hint: .26, .26
         pos_hint: {"center_x": .5, "center_y": .65}
     MDLabel:
@@ -38,10 +38,6 @@
         font_size: "20sp"
         size_hint: .20, .065
         font_name: "BPoppins"
-        on_press: root.manager.current = 'main'
-
-
-
-
-
-
+        on_press:
+            root.manager.transition.direction = "right"
+            root.manager.current = "loginscreen1"
