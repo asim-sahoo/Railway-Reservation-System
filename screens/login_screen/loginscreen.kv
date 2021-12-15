@@ -1,0 +1,47 @@
+<LoginScreen>
+    Image:
+        source: "E:\\Railway-Reservation-System test\\screens\\w3.gif"
+        size_hint: 1, 1
+        pos_hint: {"center_x": .5, "center_y": .5}
+        anim_delay: 0.04
+        anim_loop: 0
+        allow_stretch: True
+        keep_ratio: False
+    MDCard:
+        size_hint: (.4,.7)
+        pos_hint: {"center_x": .5, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 20
+        radius: [35,35,35,35]
+        padding: 0
+    Image:
+        source: "E:\\Railway-Reservation-System test\\screens\\train.png"
+        size_hint: .26, .26
+        pos_hint: {"center_x": .5, "center_y": .65}
+    MDLabel:
+        text: "RAILWAY RESERVATION SYSTEM"
+        font_name: "TPoppins"
+        font_size: "33sp"
+        pos_hint: {"center_x": .5, "center_y": .45}
+        halign: "center"
+        color: rgba(0,0,0,255)
+    MDLabel:
+        text: "Book Tickets Easily"
+        font_name: "SPoppins"
+        font_size: "28sp"
+        pos_hint: {"center_x": .5, "center_y": .4}
+        halign: "center"
+        color: rgba(0,0,0,255)
+    MDFillRoundFlatButton:
+        text :"PROCEED"
+        pos_hint: {"center_x": 0.5, "center_y": 0.27}
+        font_size: "20sp"
+        size_hint: .20, .065
+        font_name: "BPoppins"
+        on_press: root.manager.current = 'main'
+
+
+
+
+
+
