@@ -24,4 +24,26 @@
         pos_hint: {"center_x": .27, "center_y": .495}
         halign: "center"
         color: rgba(0,0,0,255)
+    MDLabel:
+        text: "System"
+        font_name: "BPoppins"
+        font_size: "40sp"
+        pos_hint: {"center_x": .27, "center_y": .43}
+        halign: "center"
+        color: rgba(0,0,0,255)
+    MDFillRoundFlatButton:
+        text :"LOGIN"
+        pos_hint: {"center_x": 0.27, "center_y": 0.33}
+        font_size: "20sp"
+        size_hint: .28, .065
+        font_name: "BPoppins"
+        on_press: 
+            root.manager.transition.direction = "left"
+            root.manager.current = "loginscreen2"
+    MDRoundFlatButton:
+        text :"SIGN UP"
+        pos_hint: {"center_x": 0.27, "center_y": 0.25}
+        font_size: "20sp"
+        size_hint: .28, .065
+        font_name: "BPoppins"
     

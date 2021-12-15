@@ -1,0 +1,72 @@
+<LoginScreen2>
+    name: "loginscreen2"
+    Image:
+        source: "loginbg.png"
+        size_hint: 1.1, 1.1
+        pos_hint: {"center_x": .5, "center_y": .5}
+    MDLabel:
+        
+        text: "Login"
+        font_name: "MPoppins"
+        font_size: "40sp"
+        pos_hint: {"center_x": .28, "center_y": .72}
+        halign: "center"
+        color: rgba(0,0,0,255)
+
+    MDLabel:
+        
+        text: "Welcome back, Please enter your details!"
+        font_name: "SPoppins"
+        font_size: "16sp"
+        pos_hint: {"center_x": .35, "center_y": .667}
+        halign: "center"
+        color: rgba(0,0,0,255)
+            
+    MDTextField:
+        mode: "rectangle"
+        hint_text: "Username"
+        pos_hint: {"center_x": .335, "center_y": .55}
+        helper_text_mode: 'on_focus'
+        size_hint: .17, .07
+        cursor_color: 0,0,0,1
+        cursor_width: "2sp"
+        multiline: False
+        background_color: 0,0,0,0
+        padding: 15
+        font_name: "SPoppins"
+        font_size: "14sp"
+        hint_text_color: rgba(3, 144, 252,255)
+    Image:
+        source: "user.png"
+        size_hint: .03,.03
+        pos_hint: {"center_x": .41, "center_y": .545}
+
+    MDTextField:
+        mode: "rectangle"
+        hint_text: "Password"
+        pos_hint: {"center_x": .335, "center_y": .445}
+        helper_text_mode: 'on_focus'
+        size_hint: .17, .07
+        cursor_color: 0,0,0,1
+        cursor_width: "2sp"
+        multiline: False
+        background_color: 0,0,0,0
+        padding: 15
+        font_name: "SPoppins"
+        font_size: "14sp"
+        hint_text_color: rgba(3, 144, 252,255)
+    Image:
+        source: "key.png"
+        size_hint: .03,.03
+        pos_hint: {"center_x": .41, "center_y": .4418}
+    MDFillRoundFlatButton:
+        text :"Login"
+        pos_hint: {"center_x": 0.2928, "center_y": 0.32}
+        font_size: "20sp"
+        size_hint: .1, .065
+        font_name: "BPoppins"
+        md_bg_color: 0,45/255,104/255,1
+        on_press:
+            root.manager.transition.direction = "left"
+            root.manager.current = "loginscreen1"        
+    
