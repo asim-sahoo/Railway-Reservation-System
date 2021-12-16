@@ -1,5 +1,8 @@
 <LoginScreen3>
     name: "loginscreen3"
+    namee: namee
+    email: email
+    password: passw
     Image:
         source: "loginbg1.png"
         size_hint: 1.1, 1.1
@@ -22,6 +25,7 @@
         halign: "center"
         color: rgba(0,0,0,255)
     MDTextField:
+        id:namee
         mode: "rectangle"
         hint_text: "Full Name"
         pos_hint: {"center_x": .335, "center_y": .6}
@@ -40,6 +44,7 @@
         size_hint: .035,.035
         pos_hint: {"center_x": .41, "center_y": .595}        
     MDTextField:
+        id: email
         mode: "rectangle"
         hint_text: "Username"
         pos_hint: {"center_x": .335, "center_y": .49}
@@ -59,6 +64,7 @@
         pos_hint: {"center_x": .41, "center_y": .485}
 
     MDTextField:
+        id: passw
         mode: "rectangle"
         hint_text: "Password"
         pos_hint: {"center_x": .335, "center_y": .38}
@@ -83,9 +89,9 @@
         size_hint: .1, .065
         font_name: "BPoppins"
         md_bg_color: 0,45/255,104/255,1
-        # on_press:
-        #     root.manager.transition.direction = "left"
-        #     root.manager.current = "loginscreen1"
+        on_press:
+            root.manager.transition.direction = "left"
+            root.submit()
     MDLabel:
         text: "Already have an account?"
         font_name: "LPoppins"

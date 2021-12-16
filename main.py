@@ -11,15 +11,15 @@ Window.size = (1920,1080)
 # main app class for kaki app with kivymd modules
 class LiveApp(MDApp, App):
 
-    DEBUG = 1 # set this to 0 make live app not working
+    DEBUG = 0 # set this to 0 make live app not working
 
     # *.kv files to watch
     KV_FILES = {
-        os.path.join(os.getcwd(), "screens/screenmanager.kv"),
-        os.path.join(os.getcwd(), "screens/login_screen/loginscreen.kv"),
-        os.path.join(os.getcwd(), "screens/login_screen/loginscreen1.kv"),
-        os.path.join(os.getcwd(), "screens/login_screen/loginscreen2.kv"),
-        os.path.join(os.getcwd(), "screens/login_screen/loginscreen3.kv"),
+        os.path.join(os.getcwd(), "screens\\screenmanager.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen1.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen2.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen3.kv"),
     }
 
     # class to watch from *.py files

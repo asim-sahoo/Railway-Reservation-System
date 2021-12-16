@@ -1,5 +1,7 @@
 <LoginScreen2>
     name: "loginscreen2"
+    email: email
+    password: password
     Image:
         source: "loginbg.png"
         size_hint: 1.1, 1.1
@@ -23,6 +25,7 @@
         color: rgba(0,0,0,255)
             
     MDTextField:
+        id: email
         mode: "rectangle"
         hint_text: "Username"
         pos_hint: {"center_x": .335, "center_y": .55}
@@ -42,6 +45,7 @@
         pos_hint: {"center_x": .41, "center_y": .545}
 
     MDTextField:
+        id: password
         mode: "rectangle"
         hint_text: "Password"
         pos_hint: {"center_x": .335, "center_y": .445}
@@ -67,9 +71,8 @@
         font_name: "BPoppins"
         md_bg_color: 0,45/255,104/255,1
         on_press:
-            root.manager.transition.direction = "left"
-            root.manager.current = "loginscreen1"
-
+            root.manager.transition.direction = "up"
+            root.loginBtn()
     MDLabel:
         text: "Don't have an account?"
         font_name: "LPoppins"
