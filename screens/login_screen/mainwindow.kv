@@ -1,0 +1,23 @@
+<MainWindow>:
+    name: "main"
+    n: n
+    Image:
+        source: "screen.png"
+        size_hint: 1.1, 1.1
+        pos_hint: {"center_x": .5, "center_y": .5}
+    MDLabel:
+        id: n
+        halign: "center"
+        pos_hint: {"center_x": .127, "center_y": 0.9297}
+        text: "Account Name: "
+        font_name: "BPoppins"
+        font_size: "45sp"
+        color: rgba(0,0,0,255)
+
+    MDIconButton:
+        icon:"logout"
+        pos_hint: {"center_x": 0.95, "center_y": .94}
+        user_font_size: "40sp"
+        on_release:
+            root.manager.current = "loginscreen2"
+            root.manager.transition.direction = "down"

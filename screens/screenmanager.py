@@ -37,16 +37,12 @@ class LoginScreen2(MDScreen):
 
     def loginBtn(self):
         if db.validate(self.email.text, self.password.text):
-            LoginScreen.current = self.email.text
+            MainWindow.current = self.email.text
             self.reset()
-            self.manager.current = "loginscreen"
+            self.manager.current = "main"
             
         else:
             invalidLogin()
-
-    # def createBtn(self):
-    #     self.reset()
-    #     self.manager.current = "loginscreen3"
 
     def reset(self):
         self.email.text = ""
@@ -70,32 +66,34 @@ class LoginScreen3(MDScreen):
         else:
             invalidForm()
 
-    # def login(self):
-    #     self.reset()
-    #     self.manager.current = "loginscreen2"
-
     def reset(self):
         self.email.text = ""
         self.password.text = ""
         self.namee.text = ""
 
+class MainWindow(Screen):
+    n = ObjectProperty(None)
+    current = ""
+
+    def on_enter(self, *args):
+        password, name, created = db.get_user(self.current)
+        self.n.text = "Hi, " + name
+    
 class MainScreenManager(ScreenManager):
     pass
 
 def invalidLogin():
-    d1 = MDDialog(title='Invalid Login',text='Invalid username or password.',radius=[20,20,20,20])
-                  
+    d1 = MDDialog(title='Invalid Login',text='Invalid username or password.',radius=[20,20,20,20])                  
     d1.open()
 
 
 def invalidForm():
     d2 = MDDialog(title='Invalid Form',text='Please fill in all inputs with valid information.',radius=[20,20,20,20])
-
     d2.open()
 
 sm = MainScreenManager()
 db = DataBase("users.txt")
 
-screens = [LoginScreen(name="loginscreen"), LoginScreen1(name="loginscreen1"),LoginScreen2(name="loginscreen2"),LoginScreen3(name="loginscreen3")]
+screens = [MainWindow(name="main"),LoginScreen(name="loginscreen"), LoginScreen1(name="loginscreen1"),LoginScreen2(name="loginscreen2"),LoginScreen3(name="loginscreen3")]
 for screen in screens:
     sm.add_widget(screen)
