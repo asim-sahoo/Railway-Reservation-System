@@ -11,7 +11,7 @@ Window.size = (1920,1080)
 # main app class for kaki app with kivymd modules
 class LiveApp(MDApp, App):
 
-    DEBUG = 0 # set this to 0 make live app not working
+    DEBUG = 1 # set this to 0 make live app not working
 
     # *.kv files to watch
     KV_FILES = {

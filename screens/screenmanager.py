@@ -44,9 +44,9 @@ class LoginScreen2(MDScreen):
         else:
             invalidLogin()
 
-    def createBtn(self):
-        self.reset()
-        self.manager.current = "loginscreen3"
+    # def createBtn(self):
+    #     self.reset()
+    #     self.manager.current = "loginscreen3"
 
     def reset(self):
         self.email.text = ""
@@ -70,9 +70,9 @@ class LoginScreen3(MDScreen):
         else:
             invalidForm()
 
-    def login(self):
-        self.reset()
-        self.manager.current = "loginscreen2"
+    # def login(self):
+    #     self.reset()
+    #     self.manager.current = "loginscreen2"
 
     def reset(self):
         self.email.text = ""
@@ -83,18 +83,15 @@ class MainScreenManager(ScreenManager):
     pass
 
 def invalidLogin():
-    pop = Popup(title='Invalid Login',
-                  content=Label(text='Invalid username or password.'),
-                  size_hint=(None, None), size=(400, 400))
-    pop.open()
+    d1 = MDDialog(title='Invalid Login',text='Invalid username or password.',radius=[20,20,20,20])
+                  
+    d1.open()
 
 
 def invalidForm():
-    pop = Popup(title='Invalid Form',
-                  content=Label(text='Please fill in all inputs with valid information.'),
-                  size_hint=(None, None), size=(400, 400))
+    d2 = MDDialog(title='Invalid Form',text='Please fill in all inputs with valid information.',radius=[20,20,20,20])
 
-    pop.open()
+    d2.open()
 
 sm = MainScreenManager()
 db = DataBase("users.txt")
