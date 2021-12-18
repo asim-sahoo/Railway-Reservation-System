@@ -7,11 +7,10 @@ from kivy.core.text import LabelBase
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFillRoundFlatButton, MDRaisedButton, MDFlatButton
 Window.size = (1920,1080)
-
 # main app class for kaki app with kivymd modules
 class LiveApp(MDApp, App):
 
-    DEBUG = 1 # set this to 0 make live app not working
+    DEBUG = 0 # set this to 0 make live app not working
 
     # *.kv files to watch
     KV_FILES = {
@@ -21,6 +20,7 @@ class LiveApp(MDApp, App):
         os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen2.kv"),
         os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen3.kv"),
         os.path.join(os.getcwd(), "screens\\login_screen\\mainwindow.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\mainwindow1.kv"),
     }
 
     # class to watch from *.py files
@@ -30,7 +30,8 @@ class LiveApp(MDApp, App):
         "LoginScreen1": "screens.screenmanager",
         "LoginScreen2": "screens.screenmanager",
         "LoginScreen3": "screens.screenmanager",
-        "MainWindow": "screens.screenmanager"
+        "MainWindow": "screens.screenmanager",
+        "MainWindow1": "screens.screenmanager"
     }
 
     # auto reload path
