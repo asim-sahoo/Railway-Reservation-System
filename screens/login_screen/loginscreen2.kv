@@ -28,8 +28,9 @@
         id: email
         mode: "rectangle"
         hint_text: "Email"
+        helper_text: "Enter a valid email"
+        helper_text_mode: "on_focus"
         pos_hint: {"center_x": .335, "center_y": .55}
-        helper_text_mode: 'on_focus'
         size_hint: .17, .07
         cursor_color: 0,0,0,1
         cursor_width: "2sp"
@@ -47,10 +48,11 @@
     MDTextField:
         id: password
         mode: "rectangle"
+        helper_text: "Use a strong password"
+        helper_text_mode: "on_focus"
         hint_text: "Password"
         password: True
         pos_hint: {"center_x": .335, "center_y": .445}
-        helper_text_mode: 'on_focus'
         size_hint: .17, .07
         cursor_color: 0,0,0,1
         cursor_width: "2sp"

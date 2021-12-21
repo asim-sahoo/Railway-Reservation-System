@@ -23,6 +23,8 @@
         id:f_st
         mode: "rectangle"
         hint_text: "From"
+        helper_text: "Enter values in capital only"
+        helper_text_mode: "on_focus"
         pos_hint: {"center_x": .12, "center_y": .7}
         helper_text_mode: 'on_focus'
         size_hint: .17, .07
@@ -38,6 +40,8 @@
         id:t_st
         mode: "rectangle"
         hint_text: "To"
+        helper_text: "Enter values in capital only"
+        helper_text_mode: "on_focus"
         pos_hint: {"center_x": .12, "center_y": .6}
         helper_text_mode: 'on_focus'
         size_hint: .17, .07
@@ -79,6 +83,11 @@
         font_name: "SPoppins"
         font_size: "14sp"
         hint_text_color: rgba(3, 144, 252,255)
+    #MDDropDownItem:
+        #id: day
+        #pos_hint: {"center_x": 0.12,"center_y": 0.3}
+        #text:"Day"
+        #on_release: self.set_item("Sun","Mon","Tue","Wed")
     MDTextField:
         id:day
         mode: "rectangle"
