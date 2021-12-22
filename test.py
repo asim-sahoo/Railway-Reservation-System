@@ -6,56 +6,56 @@ from bs4 import BeautifulSoup
 cont1 = True
 while cont1:
 
-	url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
-	st1 = input("From Station Name: ").upper()
-	querystring1 = {"station":st1}
-	headers1 = {
-		'x-rapidapi-host': "indianrailways.p.rapidapi.com",
-		'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
-		}
-	response = requests.request("GET", url1, headers=headers1, params=querystring1)
-	i1 = response.__dict__['_content'].decode("utf-8")
-	res1 = json.loads(i1)["stations"]
+    url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
+    st1 = input("From Station Name: ").upper()
+    querystring1 = {"station":st1}
+    headers1 = {
+        'x-rapidapi-host': "indianrailways.p.rapidapi.com",
+        'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
+        }
+    response = requests.request("GET", url1, headers=headers1, params=querystring1)
+    i1 = response.__dict__['_content'].decode("utf-8")
+    res1 = json.loads(i1)["stations"]
 
-	if len(res1)>1:
-		print("Be Specific")
-	else:
-		for i1 in res1:
-			s = st1
-			if i1["stationName"] == s or s in i1["stationName"]:
-				n1 = i1["stationCode"]
-	cont1 = False
+    if len(res1)>1:
+        print("Be Specific")
+    else:
+        for i1 in res1:
+            s = st1
+            if i1["stationName"] == s or s in i1["stationName"]:
+                n1 = i1["stationCode"]
+    cont1 = False
 
 ###############################
 
 cont = True
 while cont:
-	url2 = "https://indianrailways.p.rapidapi.com/findstations.php"
-	st2 = input("To Station Name: ").upper()
-	querystring2 = {"station":st2}
-	headers2 = {
-		'x-rapidapi-host': "indianrailways.p.rapidapi.com",
-		'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
-		}
-	response = requests.request("GET", url2, headers=headers2, params=querystring2)
-	i2 = response.__dict__['_content'].decode("utf-8")
-	res2 = json.loads(i2)["stations"]
-	
-	if len(res2)>1:
-		print("Be Specific")
-	else:
-		for i2 in res2:
-			s2 = st2
-			if i2["stationName"] == s2 or s2 in i2["stationName"]:
-				n2 = i2["stationCode"]
-		cont = False
+    url2 = "https://indianrailways.p.rapidapi.com/findstations.php"
+    st2 = input("To Station Name: ").upper()
+    querystring2 = {"station":st2}
+    headers2 = {
+        'x-rapidapi-host': "indianrailways.p.rapidapi.com",
+        'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
+        }
+    response = requests.request("GET", url2, headers=headers2, params=querystring2)
+    i2 = response.__dict__['_content'].decode("utf-8")
+    res2 = json.loads(i2)["stations"]
+    
+    if len(res2)>1:
+        print("Be Specific")
+    else:
+        for i2 in res2:
+            s2 = st2
+            if i2["stationName"] == s2 or s2 in i2["stationName"]:
+                n2 = i2["stationCode"]
+        cont = False
 
 
 
 
 def getdata(url):
-	r = requests.get(url)
-	return r.text
+    r = requests.get(url)
+    return r.text
 date = input("Date: ")
 month = input("Month: ").title()
 day = input("Day: ").title()
@@ -72,16 +72,18 @@ soup = BeautifulSoup(htmldata, 'html.parser')
 div = soup.find_all("div", class_="namePart")
 l = []
 for i in div:
-	
-	try:
-		j= ((i.text).split())
-		x = "Train Code: ",j[0],"Train Details: ",j[1],j[2],j[3],j[4],j[5],j[6],j[7]
-		l.append(x)
-	except IndexError:
-		pass
+    
+    try:
+        j= (i.text)
+        #x = "Train Code: ",j[0],"Train Details: ",j[1],j[2],j[3],j[4],j[5],j[6],j[7]
+        l.append(j)
+    except IndexError:
+        pass
 x = '\n'.join(map(lambda x: str(x[0]) + ' ' + str(x[1]) + ' ' + str(x[2]) + ' ' + str(x[3]) + ' ' + str(x[4]) + ' ' + str(x[5]) + ' ' + str(x[6]) + ' ' + str(x[7]), l))
 
-print(x)
+for i in l:
+    #print("Train Code: ",i[0],"Train Details: ",i[1],i[2],i[3],i[4],i[5],i[6],i[7])
+    print(i)
 #print(y)
 #print(l)
 
@@ -120,3 +122,42 @@ print(x)
 # 		pass
 # print(div1)
 
+
+from kivymd.app import MDApp
+from kivymd.uix.screen import Screen
+from kivymd.uix.list import OneLineListItem, MDList, TwoLineListItem, ThreeLineListItem
+from kivymd.uix.list import OneLineIconListItem, IconLeftWidget
+from kivy.uix.scrollview import ScrollView
+
+
+class DemoApp(MDApp):
+
+    def build(self):
+        screen = Screen()
+
+        # Creating a Simple List
+        scroll = ScrollView()
+
+        list_view = MDList()
+        div = soup.find_all("div", class_="namePart")
+        l = []
+        for i in div:
+                
+            try:
+                j= (i.text)
+                #x = "Train Code: ",j[0],"Train Details: ",j[1],j[2],j[3],j[4],j[5],j[6],j[7]
+                l.append(j)
+            except IndexError:
+                pass
+        x = '\n'.join(map(lambda x: str(x[0]) + ' ' + str(x[1]) + ' ' + str(x[2]) + ' ' + str(x[3]) + ' ' + str(x[4]) + ' ' + str(x[5]) + ' ' + str(x[6]) + ' ' + str(x[7]), l))
+        for i in l:
+            items = OneLineIconListItem(text=str(i))
+            list_view.add_widget(items)
+        scroll.add_widget(list_view)
+        # End List
+
+        screen.add_widget(scroll)
+        return screen
+
+
+DemoApp().run()
