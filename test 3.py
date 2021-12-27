@@ -24,7 +24,7 @@ BoxLayout:
 class Name(OneLineAvatarIconListItem):
     '''Custom list item.'''
 
-    icon = StringProperty("android")
+    icon = StringProperty(None)
 
 
 class MainApp(MDApp):

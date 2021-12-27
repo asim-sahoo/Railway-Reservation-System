@@ -1,6 +1,15 @@
 <MainWindow1>:
     name: "main1"
-    Image:
-        source: "screen.png"
-        size_hint: 1.1, 1.1
-        pos_hint: {"center_x": .5, "center_y": .5}
+    
+    details: details
+    MDCard:
+        
+        size_hint: (.4,.7)
+        pos_hint: {"center_x": .65, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 10
+        radius: [35,35,35,35]
+        padding: 15
+        ScrollView:
+            MDList:
+                id: details
