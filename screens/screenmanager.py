@@ -1,3 +1,4 @@
+from kivymd.uix.button import MDFillRoundFlatButton
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
@@ -14,8 +15,9 @@ from kivymd.uix.snackbar import Snackbar
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.list import MDList
-from kivymd.uix.list import OneLineIconListItem, OneLineListItem
+from kivymd.uix.list import OneLineIconListItem, OneLineListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
+from functools import partial
 # class UserName(FakeRectangularElevationBehavior, MDFloatLayout):
 #     pass
 
@@ -178,19 +180,7 @@ class MainWindow(Screen):
             soup = BeautifulSoup(htmldata, 'html.parser')
 
             div = soup.find_all("div", class_="namePart")
-            #global l
-            # l = []
-            # for i in div:
-            #     try:
-            #         j= ((i.text).split())
-            #         x = "Train Code: ",j[0],"Train Details: ",j[1],j[2],j[3],j[4],j[5],j[6],j[7]
-            #         l.append(x)
-            #     except IndexError:
-            #         pass
-            # x = '\n'.join(map(lambda x: str(x[0]) + ' ' + str(x[1]) + ' ' + str(x[2]) + ' ' + str(x[3]) + ' ' + str(x[4]) + ' ' + str(x[5]) + ' ' + str(x[6]) + ' ' + str(x[7]), l))
-            # self.details.text= x
-            # print(l)
-            # self.manager.current = "main1"
+  
             l = []
             for i in div:            
                 try:
@@ -198,12 +188,14 @@ class MainWindow(Screen):
                     l.append(j)
                 except IndexError:
                     pass
+            z = lambda x: print(x.text)
+            
             for i in l:
-                self.ids.details.add_widget(OneLineListItem(text=i))
                 
-                # list_view.add_widget(items)
-            # scroll.add_widget(list_view)
-            # screen.add_widget(scroll)
+                self.ids.details.add_widget(OneLineListItem(text=i, on_press=z))
+
+                
+            
             
             self.reset()
         else:
