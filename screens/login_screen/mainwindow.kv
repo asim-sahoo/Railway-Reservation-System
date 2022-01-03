@@ -111,7 +111,6 @@
         font_name: "BPoppins"
         md_bg_color: 0,45/255,104/255,1
         on_press:
-            #root.manager.transition.direction = "left"
             root.Show()
     MDFlatButton:
         text :"Check"
@@ -149,5 +148,15 @@
         ScrollView:
             MDList:
                 id: details
+    MDFlatButton:
+        text :"Book"
+        pos_hint: {"center_x": 0.7, "center_y": 0.15}
+        font_size: "20sp"
+        size_hint: .1, .065
+        font_name: "BPoppins"
+        md_bg_color: 0,45/255,104/255,1
+        on_press:
+            root.manager.current = "main1"
+                    
 
                     
