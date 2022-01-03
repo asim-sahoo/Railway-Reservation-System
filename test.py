@@ -161,3 +161,36 @@ class DemoApp(MDApp):
 
 
 DemoApp().run()
+
+# str(inspect.getsourcelines(func)[0])
+
+#             z = lambda x: x.text
+#             MainWindow.Show.nxt = z
+#             for i in l:
+                
+#                 self.ids.details.add_widget(OneLineListItem(text=i, on_press=z))
+                
+            
+            
+#             self.reset()
+            
+#         else:
+#             invalidForm()
+
+#     def reset(self):
+#         self.f_st.text = ""
+#         self.t_st.text = ""
+#         self.date.text = ""
+#         self.month.text = ""
+#         self.day.text = ""
+#         from_Station_code = ""
+#         from_Station_name = ""
+
+#         To_station_code = ""
+#         To_station_name = ""
+# class MainWindow1(Screen):
+#     na = ObjectProperty(None)
+#     def on_enter(self, *args):
+#         self.na.text = str(MainWindow.Show.nxt)
+#     pass
+    

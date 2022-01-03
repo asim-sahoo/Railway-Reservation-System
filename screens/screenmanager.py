@@ -1,23 +1,20 @@
-from kivymd.uix.button import MDFillRoundFlatButton
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from database import DataBase
+from database_1 import DataBase1
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.behaviors import FakeRectangularElevationBehavior
-from kivymd.uix.floatlayout import MDFloatLayout
 import requests
 import json
 from bs4 import BeautifulSoup
 from kivymd.uix.snackbar import Snackbar
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
-from kivymd.uix.list import MDList
-from kivymd.uix.list import OneLineIconListItem, OneLineListItem, IconLeftWidget
-from kivy.uix.scrollview import ScrollView
-from functools import partial
+from kivymd.uix.list import OneLineListItem
+
 # class UserName(FakeRectangularElevationBehavior, MDFloatLayout):
 #     pass
 
@@ -188,11 +185,19 @@ class MainWindow(Screen):
                     l.append(j)
                 except IndexError:
                     pass
-            z = lambda x: print(x.text)
-            
+            db1.add_train(self.f_st.text, self.t_st.text, self.date.text, self.month.text, self.day.text)
+            def z(x):
+                z1 = x.text
+                print(z1)
+                return z1
+            # st = z
+            # print(st)
+            # # z = lambda x: print(x.text)
+            #MainWindow.Show.nxt = z
             for i in l:
                 
                 self.ids.details.add_widget(OneLineListItem(text=i, on_press=z))
+            
 
                 
             
@@ -213,7 +218,9 @@ class MainWindow(Screen):
         To_station_code = ""
         To_station_name = ""
 class MainWindow1(Screen):
-    pass
+    na = ObjectProperty(None)
+    def on_enter(self, *args):
+        self.na.text = str(MainWindow.Show.nxt)
 class MainScreenManager(ScreenManager):
     pass
 
@@ -240,7 +247,4 @@ def validStation():
 
 sm = MainScreenManager()
 db = DataBase("users.txt")
-
-# screens = [MainWindow(name="main"),LoginScreen(name="loginscreen"), LoginScreen1(name="loginscreen1"),LoginScreen2(name="loginscreen2"),LoginScreen3(name="loginscreen3")]
-# for screen in screens:
-#     sm.add_widget(screen)
+db1 = DataBase1("train.txt")
