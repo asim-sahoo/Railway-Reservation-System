@@ -1,1 +1,1 @@
-['NEW DELHI', 'PATNA JN', '3', 'Jan', 'Mon']
+NEW DELHI;PATNA JN;3;Jan;Mon
