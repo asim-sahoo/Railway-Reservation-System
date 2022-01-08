@@ -185,11 +185,12 @@ class MainWindow(Screen):
                     l.append(j)
                 except IndexError:
                     pass
-            db1.add_train(self.f_st.text, self.t_st.text, self.date.text, self.month.text, self.day.text)
+            
             def z(x):
                 z1 = x.text
+                db1.add_train(z1)
+                self.manager.current = "main1"
                 print(z1)
-                return z1
             # st = z
             # print(st)
             # # z = lambda x: print(x.text)
@@ -220,7 +221,8 @@ class MainWindow(Screen):
 class MainWindow1(Screen):
     na = ObjectProperty(None)
     def on_enter(self, *args):
-        self.na.text = str(MainWindow.Show.nxt)
+        he = db1.get_train()
+        self.na.text = he
 class MainScreenManager(ScreenManager):
     pass
 

@@ -1,1 +1,2 @@
-['NEW DELHI', 'PATNA JN', '3', 'Jan', 'Mon']
+
+12306  NEW DELHI - HOWRAH Rajdhani Express
