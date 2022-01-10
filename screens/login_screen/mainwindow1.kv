@@ -73,3 +73,12 @@
         GridLayout:
             id: passenger
             cols: 1
+    MDFillRoundFlatButton:
+        text :"Book"
+        pos_hint: {"center_x": 0.55, "center_y": 0.1}
+        font_size: "20sp"
+        size_hint: .1, .065
+        font_name: "BPoppins"
+        md_bg_color: 0,45/255,104/255,1
+        on_press:
+            root.book()

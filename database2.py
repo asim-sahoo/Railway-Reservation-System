@@ -10,6 +10,6 @@ class DataBase2:
 
     def write(self):
         with open(self.filename, "a") as f:
-            f.write(str(self.details))
+            f.write(str(self.details)+"\n")
 
         

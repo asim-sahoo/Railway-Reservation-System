@@ -1,0 +1,2 @@
+['\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['Sagnik', '13', 'Asim', '12']]['\n13414  OLD DELHI - MALDA TOWN Farakka Exp (via Sultanpur)\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['Asim', '12', 'Sagnik', '12']]
+['\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['a', '1', 'b', '2']]

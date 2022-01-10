@@ -59,6 +59,7 @@ class LoginScreen3(MDScreen):
                 db.add_user(self.email.text, self.password.text, self.namee.text)
                 self.reset()
                 self.manager.current = "loginscreen2"
+                signup()
             else:
                 invalidForm()
         else:
@@ -226,26 +227,33 @@ class MainWindow1(Screen):
     p_n = ObjectProperty(None)
     p_a = ObjectProperty(None)
     passenger = []
+    
     def on_enter(self, *args):
         he = db1.get_train()
-        ab = db1.get_data()
-        tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
+        
+
         self.na.text = he
     def add_p(self):
-        pa_n = self.p_n.text
-        pa_a = self.p_a.text
-        self.passenger.append(pa_n)
-        self.passenger.append(pa_a)
-        products_container = self.ids.passenger
-        details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
-        products_container.add_widget(details)
+        if self.p_n.text != "" and self.p_a.text != "":
+            pa_n = self.p_n.text
+            pa_a = self.p_a.text
+            self.passenger.append(pa_n)
+            self.passenger.append(pa_a)
+            products_container = self.ids.passenger
+            details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
+            products_container.add_widget(details)
 
-        name = Label(text=pa_n,size_hint_x=.2,color=(.06,.45,.45,1))
-        age = Label(text=pa_a,size_hint_x=.3,color=(.06,.45,.45,1))
-        details.add_widget(name)
-        details.add_widget(age)
-        self.reset()
-        
+            name = Label(text=pa_n,size_hint_x=.2,color=(.06,.45,.45,1))
+            age = Label(text=pa_a,size_hint_x=.3,color=(.06,.45,.45,1))
+            details.add_widget(name)
+            details.add_widget(age)
+            self.reset()
+        else:
+            invalidForm()
+    def book(self):
+        ab = db1.get_data()
+        tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
+        db2.add_details(tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
     def reset(self):
         self.p_n.text = ""
         self.p_a.text = ""
@@ -265,6 +273,9 @@ def invalidStation():
     snackbar_x="10dp",
     snackbar_y="10dp",
     ).open()
+def signup():
+    d2 = MDDialog(text='Signed Up Successfully.',radius=[20,20,20,20])
+    d2.open()
 def validStation():
     Snackbar(
     text="Valid Station!",
