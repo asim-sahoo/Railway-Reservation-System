@@ -6,3 +6,8 @@
 [8774, '\n22460  ANAND VIHAR T - MADHUPUR Humsafar Express\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['asim', '13']]
 [8775, '\n13414  OLD DELHI - MALDA TOWN Farakka Exp (via Sultanpur)\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['SAGNIK', '12']]
 [8776, '\n12324  BARMER - HOWRAH SF Express\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'KOAA', 'KOLKATA', ['asim', '13']]
+[8777, '\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['a', '1', 'b', '1']]
+[8778, '\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['a', '1']]
+[8779, '\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['aaaa', '1']]
+[8780, '\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['aaaa', '1']]
+[8781, '\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['aaaaaaaaaaaaaaaa', '122']]

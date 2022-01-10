@@ -8,7 +8,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFillRoundFlatButton, MDRaisedButton, MDFlatButton
 Window.size = (1920,1080)
 # main app class for kaki app with kivymd modules
-class LiveApp(MDApp, App):
+class Railway(MDApp, App):
 
     DEBUG = 0 # set this to 0 make live app not working
 
@@ -58,4 +58,4 @@ if __name__ == "__main__":
     LabelBase.register(name="BPoppins", fn_regular="Poppins-Medium.ttf")
     LabelBase.register(name="MPoppins", fn_regular="Poppins-Bold.ttf")
     LabelBase.register(name="LPoppins", fn_regular="Poppins-Light.ttf")
-    LiveApp().run()
+    Railway().run()

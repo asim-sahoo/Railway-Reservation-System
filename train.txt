@@ -1,1 +1,1 @@
-['\n12324  BARMER - HOWRAH SF Express\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'KOAA', 'KOLKATA']
+['\n03392  NEW DELHI - RAJGIR Clone Special\n', '10', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN']

@@ -217,10 +217,9 @@ class MainWindow(Screen):
         self.date.text = ""
         self.month.text = ""
         self.day.text = ""
-        from_Station_code = ""
-        from_Station_name = ""
-        To_station_code = ""
-        To_station_name = ""
+
+class Book(Screen):
+    pass
 class MainWindow1(Screen):
     na = ObjectProperty(None)
     p_n = ObjectProperty(None)
@@ -256,14 +255,12 @@ class MainWindow1(Screen):
         ab = db1.get_data()
         tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
         db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
-        self.manager.current = "book"
+        self.manager.current = "bk"
 
     def reset(self):
         self.p_n.text = ""
         self.p_a.text = ""
 
-class Book(Screen):
-    pass
 class MainScreenManager(ScreenManager):
     pass
 
