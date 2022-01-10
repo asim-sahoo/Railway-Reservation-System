@@ -9,6 +9,8 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.behaviors import FakeRectangularElevationBehavior
 import requests
 import json
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
 from bs4 import BeautifulSoup
 from kivymd.uix.snackbar import Snackbar
 from kivymd.app import MDApp
@@ -220,9 +222,27 @@ class MainWindow(Screen):
         To_station_name = ""
 class MainWindow1(Screen):
     na = ObjectProperty(None)
+    p_n = ObjectProperty(None)
+    p_a = ObjectProperty(None)
     def on_enter(self, *args):
         he = db1.get_train()
         self.na.text = he
+    def add_p(self):
+        pa_n = self.p_n.text
+        pa_a = self.p_a.text
+        products_container = self.ids.passenger
+        details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
+        products_container.add_widget(details)
+
+        name = Label(text=pa_n,size_hint_x=.2,color=(.06,.45,.45,1))
+        age = Label(text=pa_a,size_hint_x=.3,color=(.06,.45,.45,1))
+        details.add_widget(name)
+        details.add_widget(age)
+        self.reset()
+        
+    def reset(self):
+        self.p_n.text = ""
+        self.p_a.text = ""
 class MainScreenManager(ScreenManager):
     pass
 

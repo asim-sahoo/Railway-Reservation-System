@@ -1,6 +1,8 @@
 <MainWindow1>:
     name: "main1"
     na: na
+    p_n: p_n
+    p_a: p_a
     Image:
         source: "screen.png"
         size_hint: 1.1, 1.1
@@ -13,11 +15,12 @@
         font_name: "SPoppins"
         font_size: "20sp"
         color: rgba(0,0,0,255)
+
     MDTextField:
-        id:pass_no
+        id:p_n
         mode: "rectangle"
-        hint_text: "Number"
-        helper_text: "Enter Number of Passengers"
+        hint_text: "Name"
+        helper_text: "Enter your name"
         helper_text_mode: "on_focus"
         pos_hint: {"center_x": .12, "center_y": .7}
         helper_text_mode: 'on_focus'
@@ -30,3 +33,40 @@
         font_name: "SPoppins"
         font_size: "14sp"
         hint_text_color: rgba(3, 144, 252,255)
+    MDTextField:
+        id:p_a
+        mode: "rectangle"
+        hint_text: "Age"
+        helper_text: "Enter your age"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": .12, "center_y": .6}
+        helper_text_mode: 'on_focus'
+        size_hint: .17, .07
+        cursor_color: 0,0,0,1
+        cursor_width: "2sp"
+        multiline: False
+        background_color: 0,0,0,0
+        padding: 15
+        font_name: "SPoppins"
+        font_size: "14sp"
+        hint_text_color: rgba(3, 144, 252,255)
+    MDFillRoundFlatButton:
+        text :"Add Passenger"
+        pos_hint: {"center_x": 0.08, "center_y": 0.15}
+        font_size: "20sp"
+        size_hint: .1, .065
+        font_name: "BPoppins"
+        md_bg_color: 0,45/255,104/255,1
+        on_press:
+            root.add_p()
+    MDCard:
+        
+        size_hint: (.4,.7)
+        pos_hint: {"center_x": .65, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 10
+        radius: [35,35,35,35]
+        padding: 15
+        GridLayout:
+            id: passenger
+            cols: 1
