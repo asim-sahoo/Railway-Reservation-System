@@ -17,12 +17,13 @@ class DataBase1:
     def get_train(self):
         for i in self.train:
             return i
+    def get_data(self):
+        return self.train
 
-    def add_train(self,tx):
-        self.train = [tx]
+    def add_train(self,tx,dt,mon,fsc,fsn,tsc,tsn):
+        self.train = [tx,dt,mon,fsc,fsn,tsc,tsn]
         self.save()
 
     def save(self):
         with open(self.filename, "w") as f:
-            for i in self.train:
-                f.write(i)
+            f.write(str(self.train))

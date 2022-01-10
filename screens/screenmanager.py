@@ -2,7 +2,8 @@ from kivymd.uix.dialog import MDDialog
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from database import DataBase
-from database_1 import DataBase1
+from database1 import DataBase1
+from database2 import DataBase2
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
@@ -190,7 +191,7 @@ class MainWindow(Screen):
             
             def z(x):
                 z1 = x.text
-                db1.add_train(z1)
+                db1.add_train(z1,date,month,n1,st1,n2,st2)
                 self.manager.current = "main1"
                 print(z1)
             # st = z
@@ -224,13 +225,17 @@ class MainWindow1(Screen):
     na = ObjectProperty(None)
     p_n = ObjectProperty(None)
     p_a = ObjectProperty(None)
-    data = []
+    passenger = []
     def on_enter(self, *args):
         he = db1.get_train()
+        ab = db1.get_data()
+        tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
         self.na.text = he
     def add_p(self):
         pa_n = self.p_n.text
         pa_a = self.p_a.text
+        self.passenger.append(pa_n)
+        self.passenger.append(pa_a)
         products_container = self.ids.passenger
         details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
         products_container.add_widget(details)
@@ -271,3 +276,4 @@ def validStation():
 sm = MainScreenManager()
 db = DataBase("users.txt")
 db1 = DataBase1("train.txt")
+db2 = DataBase2("MainDatabase.txt")
