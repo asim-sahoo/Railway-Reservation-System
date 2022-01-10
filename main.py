@@ -21,6 +21,7 @@ class LiveApp(MDApp, App):
         os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen3.kv"),
         os.path.join(os.getcwd(), "screens\\login_screen\\mainwindow.kv"),
         os.path.join(os.getcwd(), "screens\\login_screen\\mainwindow1.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\book.kv")
     }
 
     # class to watch from *.py files
@@ -31,7 +32,8 @@ class LiveApp(MDApp, App):
         "LoginScreen2": "screens.screenmanager",
         "LoginScreen3": "screens.screenmanager",
         "MainWindow": "screens.screenmanager",
-        "MainWindow1": "screens.screenmanager"
+        "MainWindow1": "screens.screenmanager",
+        "Book": "screens.screenmanager"
     }
 
     # auto reload path

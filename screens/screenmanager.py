@@ -219,7 +219,6 @@ class MainWindow(Screen):
         self.day.text = ""
         from_Station_code = ""
         from_Station_name = ""
-
         To_station_code = ""
         To_station_name = ""
 class MainWindow1(Screen):
@@ -227,12 +226,14 @@ class MainWindow1(Screen):
     p_n = ObjectProperty(None)
     p_a = ObjectProperty(None)
     passenger = []
-    
+    file=open("MainDatabase.txt",'r')
+    pnr=len(file.readlines())+8769
+    file.close()
+
     def on_enter(self, *args):
         he = db1.get_train()
-        
-
         self.na.text = he
+
     def add_p(self):
         if self.p_n.text != "" and self.p_a.text != "":
             pa_n = self.p_n.text
@@ -250,15 +251,22 @@ class MainWindow1(Screen):
             self.reset()
         else:
             invalidForm()
-    def book(self):
+
+    def bookbtn(self):
         ab = db1.get_data()
         tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
-        db2.add_details(tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
+        db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
+        self.manager.current = "book"
+
     def reset(self):
         self.p_n.text = ""
         self.p_a.text = ""
+
+class Book(Screen):
+    pass
 class MainScreenManager(ScreenManager):
     pass
+
 
 def invalidLogin():
     d1 = MDDialog(title='Invalid Login',text='Invalid username or password.',radius=[20,20,20,20])                  
