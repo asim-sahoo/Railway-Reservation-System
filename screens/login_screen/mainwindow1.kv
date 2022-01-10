@@ -7,6 +7,7 @@
         source: "screen.png"
         size_hint: 1.1, 1.1
         pos_hint: {"center_x": .5, "center_y": .5}
+        
     MDLabel:
         id: na
         halign: "center"
@@ -33,6 +34,7 @@
         font_name: "SPoppins"
         font_size: "14sp"
         hint_text_color: rgba(3, 144, 252,255)
+
     MDTextField:
         id:p_a
         mode: "rectangle"
@@ -50,17 +52,18 @@
         font_name: "SPoppins"
         font_size: "14sp"
         hint_text_color: rgba(3, 144, 252,255)
+
     MDFillRoundFlatButton:
         text :"Add Passenger"
         pos_hint: {"center_x": 0.08, "center_y": 0.15}
         font_size: "20sp"
-        size_hint: .1, .065
+        size_hint: .125, .065
         font_name: "BPoppins"
         md_bg_color: 0,45/255,104/255,1
         on_press:
             root.add_p()
-    MDCard:
-        
+
+    MDCard:    
         size_hint: (.4,.7)
         pos_hint: {"center_x": .65, "center_y": .5}
         md_bg_color: 1,1,1,1

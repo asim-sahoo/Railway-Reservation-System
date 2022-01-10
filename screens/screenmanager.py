@@ -224,6 +224,7 @@ class MainWindow1(Screen):
     na = ObjectProperty(None)
     p_n = ObjectProperty(None)
     p_a = ObjectProperty(None)
+    data = []
     def on_enter(self, *args):
         he = db1.get_train()
         self.na.text = he

@@ -26,4 +26,3 @@ class DataBase1:
         with open(self.filename, "w") as f:
             for i in self.train:
                 f.write(i)
-            #f.write(str(self.train))
