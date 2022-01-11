@@ -12,7 +12,7 @@
         size_hint: (.4,.7)
         pos_hint: {"center_x": .5, "center_y": .5}
         md_bg_color: 1,1,1,1
-        elevation: 20
+        elevation: 30
         radius: [35,35,35,35]
         padding: 0
     Image:
@@ -39,6 +39,7 @@
         font_size: "20sp"
         size_hint: .20, .065
         font_name: "BPoppins"
+        md_bg_color: rgba(0,88,188,255)
         on_press:
             root.manager.transition.direction = "left"
             root.manager.current = "loginscreen1"

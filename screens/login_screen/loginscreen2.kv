@@ -72,7 +72,7 @@
         font_size: "20sp"
         size_hint: .1, .065
         font_name: "BPoppins"
-        md_bg_color: 0,45/255,104/255,1
+        md_bg_color: rgba(0,88,188,255)
         on_press:
             root.manager.transition.direction = "up"
             root.loginBtn()
@@ -80,14 +80,14 @@
         text: "Don't have an account?"
         font_name: "LPoppins"
         font_size: "14sp"
-        pos_hint: {"center_x": .33, "center_y": .18}
+        pos_hint: {"center_x": .33, "center_y": .2}
         halign: "center"
         color: rgba(0,0,0,255)
     MDTextButton:
         text: "Sign Up"
         font_name: "LPoppins"
         font_size: "14sp"
-        pos_hint: {"center_x": .405, "center_y": .18}
+        pos_hint: {"center_x": .405, "center_y": .2}
         color: rgba(66,135,245,255)
         on_press:
             root.manager.transition.direction = "left"
