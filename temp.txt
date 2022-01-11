@@ -1,0 +1,1 @@
+['8780', '\n12436  ANAND VIHAR T - JAYNAGAR Garib Rath Express\n', '11', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['asim', '3']]

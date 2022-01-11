@@ -4,6 +4,7 @@ from kivy.properties import ObjectProperty
 from database import DataBase
 from database1 import DataBase1
 from database2 import DataBase2
+from temp import Temp
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
@@ -195,10 +196,7 @@ class MainWindow(Screen):
                 db1.add_train(z1,date,month,n1,st1,n2,st2)
                 self.manager.current = "main1"
                 print(z1)
-            # st = z
-            # print(st)
-            # # z = lambda x: print(x.text)
-            #MainWindow.Show.nxt = z
+            
             for i in l:
                 
                 self.ids.details.add_widget(OneLineListItem(text=i, on_press=z))
@@ -219,14 +217,30 @@ class MainWindow(Screen):
         self.day.text = ""
 
 class Book(Screen):
-    pass
+    def on_enter(self, *args):
+        
+        gg = dbt3.get_pass()
+        print(gg)
+        pnr,tx,dt,mon,fsc,fsn,tsc,tsn,passenger = str(gg[0]),gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7],gg[8]
+        gg1 = [str(gg[0]),gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7]]
+        tick = self.ids.ticket
+        details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
+        tick.add_widget(details)
+        for i in gg1:
+
+            pn = Label(text=i,size_hint_x=.2,color=(.06,.45,.45,1),pos_hint={"center_x": .65, "center_y": .4})
+            details.add_widget(pn)
+        
+
+
+    
 class MainWindow1(Screen):
     na = ObjectProperty(None)
     p_n = ObjectProperty(None)
     p_a = ObjectProperty(None)
     passenger = []
     file=open("MainDatabase.txt",'r')
-    pnr=len(file.readlines())+8769
+    pnr=str(len(file.readlines())+8769)
     file.close()
 
     def on_enter(self, *args):
@@ -255,6 +269,7 @@ class MainWindow1(Screen):
         ab = db1.get_data()
         tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
         db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
+        dbt3.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
         self.manager.current = "bk"
 
     def reset(self):
@@ -293,3 +308,4 @@ sm = MainScreenManager()
 db = DataBase("users.txt")
 db1 = DataBase1("train.txt")
 db2 = DataBase2("MainDatabase.txt")
+dbt3 = Temp("temp.txt")
