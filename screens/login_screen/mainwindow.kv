@@ -13,8 +13,8 @@
         pos_hint: {"center_x": .5, "center_y": .5}
     MDLabel:
         id: n
-        halign: "center"
-        pos_hint: {"center_x": .127, "center_y": 0.9297}
+        halign: "left"
+        pos_hint: {"center_x": 0.53,'center_y': .9297}
         text: "Account Name: "
         font_name: "BPoppins"
         font_size: "45sp"
@@ -133,8 +133,8 @@
         on_release:
             root.manager.current = "loginscreen2"
             root.manager.transition.direction = "down"
-    MDCard:
-        
+    
+    MDCard:  
         size_hint: (.4,.7)
         pos_hint: {"center_x": .65, "center_y": .5}
         md_bg_color: 1,1,1,1

@@ -1,18 +1,69 @@
 <Book>:
     name: "bk"
-    ticket: ticket
+    pnr: pnr
+    tx: tx
+    fsn: fsn
+    tsn: tsn
+    dt_mon: dt_mon
+    passenger: passenger
     Image:
         source: "screen.png"
         size_hint: 1.1, 1.1
         pos_hint: {"center_x": .5, "center_y": .5}
     MDCard:    
-        size_hint: (.4,.7)
+        size_hint: (.4,.3)
         pos_hint: {"center_x": .5, "center_y": .5}
         md_bg_color: 1,1,1,1
         elevation: 10
         radius: [8,8,8,8]
-        padding: 15
-        BoxLayout:
-            id: ticket
-            cols: 1
-        
+        padding: 20
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                MDLabel:   
+                    id:pnr
+                    text:"PNR:"
+                    font_name: "SPoppins"
+                    font_size: "15sp"
+                    halign: "left"
+                    color: rgba(0,0,0,255)
+                MDLabel:   
+                    id:tx
+                    text:"TRAIN:"
+                    font_name: "SPoppins"
+                    font_size: "15sp"
+                    #pos_hint: {"center_x": .35, "center_y": .72}
+                    halign: "left"
+                    color: rgba(0,0,0,255)
+                MDLabel:   
+                    id:fsn
+                    text:"FROM:"
+                    font_name: "SPoppins"
+                    font_size: "15sp"
+                    #pos_hint: {"center_x": .35, "center_y": .64}
+                    halign: "left"
+                    color: rgba(0,0,0,255)
+                MDLabel:   
+                    id:tsn
+                    text:"TO:"
+                    font_name: "SPoppins"
+                    font_size: "15sp"
+                    #pos_hint: {"center_x": .35, "center_y": .56}
+                    halign: "left"
+                    color: rgba(0,0,0,255)
+                MDLabel:   
+                    id:dt_mon
+                    text:"DATE:"
+                    font_name: "SPoppins"
+                    font_size: "15sp"
+                    #pos_hint: {"center_x": .35, "center_y": .48}
+                    halign: "left"
+                    color: rgba(0,0,0,255)
+                MDLabel:   
+                    id:passenger
+                    text:"PASSENGER:"
+                    font_name: "SPoppins"
+                    font_size: "15sp"
+                    #pos_hint: {"center_x": .35, "center_y": .40}
+                    halign: "left"
+                    color: rgba(0,0,0,255)

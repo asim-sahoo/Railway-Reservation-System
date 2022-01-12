@@ -217,19 +217,35 @@ class MainWindow(Screen):
         self.day.text = ""
 
 class Book(Screen):
+    pnr=ObjectProperty(None)
+    tx=ObjectProperty(None)
+    fsn=ObjectProperty(None)
+    tsn=ObjectProperty(None)
+    dt_mon=ObjectProperty(None)
+    passenger=ObjectProperty(None)
     def on_enter(self, *args):
+
         
         gg = dbt3.get_pass()
         print(gg)
-        pnr,tx,dt,mon,fsc,fsn,tsc,tsn,passenger = str(gg[0]),gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7],gg[8]
-        gg1 = [str(gg[0]),gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7]]
-        tick = self.ids.ticket
-        details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
-        tick.add_widget(details)
-        for i in gg1:
+        pnr,tx,dt,mon,fsc,fsn,tsc,tsn,p = gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7],gg[8]
+        gg1 = [gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7]]
+        i=0
+        while i<len(p):
+            self.passenger.text+= p[i]+' - '+p[i+1]+"\n"
+            i+=2
 
-            pn = Label(text=i,size_hint_x=.2,color=(.06,.45,.45,1),pos_hint={"center_x": .65, "center_y": .4})
-            details.add_widget(pn)
+        self.pnr.text="PNR: "+gg[0]
+        self.tx.text="TRAIN: "+gg[1].strip()
+        self.fsn.text="FROM: "+gg[5]
+        self.tsn.text="TO: "+gg[7]
+        self.dt_mon.text="DATE: "+gg[2]+" "+gg[3]
+        #tick = self.ids.ticket
+        #details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
+        #tick.add_widget(details)
+        #for i in gg1:
+            # pn = Label(text=i,size_hint_x=.2,color=(.06,.45,.45,1),pos_hint={"center_x": .65, "center_y": .4})
+            # details.add_widget(pn)
         
 
 
