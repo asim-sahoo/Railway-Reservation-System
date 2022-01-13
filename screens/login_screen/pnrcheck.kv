@@ -37,6 +37,15 @@
         md_bg_color: 0,45/255,104/255,1
         on_press:
             root.search()
+    MDFillRoundFlatButton:
+        text :"Cancel"
+        pos_hint: {"center_x": 0.7, "center_y": 0.7987}
+        font_size: "20sp"
+        size_hint: .1, .063
+        font_name: "BPoppins"
+        md_bg_color: 0,45/255,104/255,1
+        on_press:
+            root.cancel()
     MDCard:    
         size_hint: (.3,.57)
         pos_hint: {"center_x": .5, "center_y": .43}
@@ -44,8 +53,8 @@
         elevation: 10
         radius: [8,8,8,8]
         padding: 20
-        BoxLayout:
-            orientation: 'vertical'
+        GridLayout:
+            cols: 1           
             MDLabel:   
                 id:pnra
                 text:"PNR:"
@@ -58,7 +67,6 @@
                 text:"TRAIN:"
                 font_name: "SPoppins"
                 font_size: "15sp"
-                #pos_hint: {"center_x": .35, "center_y": .72}
                 halign: "left"
                 color: rgba(0,0,0,255)
             MDLabel:   
@@ -66,7 +74,6 @@
                 text:"FROM:"
                 font_name: "SPoppins"
                 font_size: "15sp"
-                #pos_hint: {"center_x": .35, "center_y": .64}
                 halign: "left"
                 color: rgba(0,0,0,255)
             MDLabel:   
@@ -74,7 +81,6 @@
                 text:"TO:"
                 font_name: "SPoppins"
                 font_size: "15sp"
-                #pos_hint: {"center_x": .35, "center_y": .56}
                 halign: "left"
                 color: rgba(0,0,0,255)
             MDLabel:   
@@ -82,17 +88,23 @@
                 text:"DATE:"
                 font_name: "SPoppins"
                 font_size: "15sp"
-                #pos_hint: {"center_x": .35, "center_y": .48}
                 halign: "left"
                 color: rgba(0,0,0,255)
-            MDLabel:   
-                id:passengera
-                text:"PASSENGER:"
-                font_name: "SPoppins"
-                font_size: "15sp"
-                #pos_hint: {"center_x": .35, "center_y": .40}
-                halign: "left"
-                color: rgba(0,0,0,255)
+            ScrollView:
+                do_scroll_x: False  
+                do_scroll_y: True
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    size: root.width * 0.1, root.height * 0.1
+                    MDLabel:   
+                        id:passengera
+                        text:"PASSENGER:"
+                        font_name: "SPoppins"
+                        font_size: "15sp"
+                        #pos_hint: {"center_x": .35, "center_y": .40}
+                        halign: "left"
+                        color: rgba(0,0,0,255)
     MDIconButton:
         icon:"logout"
         pos_hint: {"center_x": 0.95, "center_y": .94}
@@ -100,3 +112,10 @@
         on_release:
             root.manager.current = "loginscreen2"
             root.manager.transition.direction = "down"
+    MDIconButton:
+        icon: "home-outline"
+        pos_hint: {"center_x": 0.95, "center_y": .89}
+        user_font_size: "40sp"
+        on_press:
+            root.manager.transition.direction = "right"
+            root.manager.current = "choose"

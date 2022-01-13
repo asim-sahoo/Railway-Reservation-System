@@ -1,9 +1,18 @@
 <TwoChoice>:
     name: "choose"
+    n: n
     Image:
         source: "choicescreen.png"
         size_hint: 1.1, 1.1
         pos_hint: {"center_x": .5, "center_y": .5}
+    MDLabel:
+        id: n
+        halign: "left"
+        pos_hint: {"center_x": 0.53,'center_y': .9297}
+        text: "Hi,"
+        font_name: "SPoppins"
+        font_size: "37sp"
+        color: rgba(0,0,0,255)
     MDRoundFlatButton:
         text :"Book"
         pos_hint: {"center_x": 0.4067, "center_y": 0.355}

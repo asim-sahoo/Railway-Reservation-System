@@ -19,12 +19,8 @@ from kivymd.uix.snackbar import Snackbar
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.list import OneLineListItem
+import importlib
 
-# class UserName(FakeRectangularElevationBehavior, MDFloatLayout):
-#     pass
-
-# class Password(FakeRectangularElevationBehavior, MDFloatLayout):
-#     pass
 class LoginScreen(MDScreen):
     pass
 
@@ -36,19 +32,22 @@ class LoginScreen2(MDScreen):
     password = ObjectProperty(None)
 
     def loginBtn(self):
-        if self.email.text != "" and self.password.text != "":
-            if db.validate(self.email.text, self.password.text):
-                MainWindow.current = self.email.text
-                self.reset()
-                self.manager.current = "choose"            
-            else:
-                invalidLogin()
-        else:
-            invalidLogin()
+        # if self.email.text != "" and self.password.text != "":
+        #     if db.validate(self.email.text, self.password.text):
+        #         MainWindow.current = self.email.text
+        #         TwoChoice.current = self.email.text
+        #         self.reset()
+        #         self.manager.current = "choose"            
+        #     else:
+        #         invalidLogin()
+        # else:
+        #     invalidLogin()
+        self.manager.current = "choose"
 
     def reset(self):
         self.email.text = ""
         self.password.text = ""
+    
 
 class LoginScreen3(MDScreen):
     namee = ObjectProperty(None)
@@ -82,9 +81,9 @@ class MainWindow(Screen):
     details = ObjectProperty(None)
     current = ""
 
-    def on_enter(self, *args):
-        password, name, created = db.get_user(self.current)
-        self.n.text = "Hi, " + name
+    # def on_enter(self, *args):
+    #     password, name, created = db.get_user(self.current)
+    #     self.n.text = "Hi, " + name
     def check(self):
         url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
         st1 = self.f_st.text
@@ -128,85 +127,89 @@ class MainWindow(Screen):
 
     def Show(self):
         if self.f_st.text != "" and self.t_st.text != "" and self.date.text != "" and self.month.text != "" and self.day.text != "":
-            
-            url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
-            st1 = self.f_st.text
-            querystring1 = {"station":st1}
-            headers1 = {
-                'x-rapidapi-host': "indianrailways.p.rapidapi.com",
-                'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
-                }
-            response = requests.request("GET", url1, headers=headers1, params=querystring1)
-            i1 = response.__dict__['_content'].decode("utf-8")
-            res1 = json.loads(i1)["stations"]
+            try:  
+                url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
+                st1 = self.f_st.text
+                querystring1 = {"station":st1}
+                headers1 = {
+                    'x-rapidapi-host': "indianrailways.p.rapidapi.com",
+                    'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
+                    }
+                response = requests.request("GET", url1, headers=headers1, params=querystring1)
+                i1 = response.__dict__['_content'].decode("utf-8")
+                res1 = json.loads(i1)["stations"]
 
-            if len(res1)>1:
-                invalidStation()
-            else:
-                for i1 in res1:
-                    s = st1
-                    if i1["stationName"] == s or s in i1["stationName"]:
-                        n1 = i1["stationCode"]
-            url2 = "https://indianrailways.p.rapidapi.com/findstations.php"
-            st2 = self.t_st.text
-            querystring2 = {"station":st2}
-            headers2 = {
-                'x-rapidapi-host': "indianrailways.p.rapidapi.com",
-                'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
-                }
-            response = requests.request("GET", url2, headers=headers2, params=querystring2)
-            i2 = response.__dict__['_content'].decode("utf-8")
-            res2 = json.loads(i2)["stations"]
-            
-            if len(res2)>1:
-                invalidStation()
+                if len(res1)>1:
+                    invalidStation()
+                else:
+                    for i1 in res1:
+                        s = st1
+                        if i1["stationName"] == s or s in i1["stationName"]:
+                            n1 = i1["stationCode"]
+                url2 = "https://indianrailways.p.rapidapi.com/findstations.php"
+                st2 = self.t_st.text
+                querystring2 = {"station":st2}
+                headers2 = {
+                    'x-rapidapi-host': "indianrailways.p.rapidapi.com",
+                    'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
+                    }
+                response = requests.request("GET", url2, headers=headers2, params=querystring2)
+                i2 = response.__dict__['_content'].decode("utf-8")
+                res2 = json.loads(i2)["stations"]
                 
-            else:
-                for i2 in res2:
-                    s2 = st2
-                    if i2["stationName"] == s2 or s2 in i2["stationName"]:
-                        n2 = i2["stationCode"]
-            def getdata(url):
-                r = requests.get(url)
-                return r.text
-            date = self.date.text
-            month = self.month.text
-            day = self.day.text
-            from_Station_code = n1
-            from_Station_name = st1
+                if len(res2)>1:
+                    invalidStation()
+                    
+                else:
+                    for i2 in res2:
+                        s2 = st2
+                        if i2["stationName"] == s2 or s2 in i2["stationName"]:
+                            n2 = i2["stationCode"]
+                def getdata(url):
+                    r = requests.get(url)
+                    return r.text
+                date = self.date.text
+                month = self.month.text
+                day = self.day.text
+                from_Station_code = n1
+                from_Station_name = st1
 
-            To_station_code = n2
-            To_station_name = st2
-            url = "https://www.railyatri.in/booking/trains-between-stations?from_code="+from_Station_code+"&from_name="+from_Station_name+"JN+&journey_date="+date+"+"+month+"+"+day+"&src=tbs&to_code="+To_station_code+"&to_name="+To_station_name+"+&user_id=-1639744636&user_token=41639744636&utm_source=dwebsearch_tbs_search_trains"
+                To_station_code = n2
+                To_station_name = st2
+                url = "https://www.railyatri.in/booking/trains-between-stations?from_code="+from_Station_code+"&from_name="+from_Station_name+"JN+&journey_date="+date+"+"+month+"+"+day+"&src=tbs&to_code="+To_station_code+"&to_name="+To_station_name+"+&user_id=-1639744636&user_token=41639744636&utm_source=dwebsearch_tbs_search_trains"
 
-            htmldata = getdata(url)
-            soup = BeautifulSoup(htmldata, 'html.parser')
+                htmldata = getdata(url)
+                soup = BeautifulSoup(htmldata, 'html.parser')
 
-            div = soup.find_all("div", class_="namePart")
-  
-            l = []
-            for i in div:            
-                try:
-                    j= (i.text)
-                    l.append(j)
-                except IndexError:
-                    pass
-            
-            def z(x):
-                z1 = x.text
-                db1.add_train(z1,date,month,n1,st1,n2,st2)
-                self.manager.current = "main1"
-                print(z1)
-            
-            for i in l:
+                div = soup.find_all("div", class_="namePart")
+    
+                l = []
+                for i in div:            
+                    try:
+                        j= (i.text)
+                        l.append(j)
+                    except IndexError:
+                        pass
                 
-                self.ids.details.add_widget(OneLineListItem(text=i, on_press=z))
-            
 
+                def z(x):
+                    z1 = x.text
+                    db1.add_train(z1,date,month,n1,st1,n2,st2)
+                    self.ids.details.clear_widgets()
+                    self.manager.current = "main1"
+                    print(z1)
                 
-            
-            
-            self.reset()
+                for i in l:
+                    
+                    self.ids.details.add_widget(OneLineListItem(text=i, on_press=z))
+                
+
+                    
+                
+                
+                self.reset()
+            except UnboundLocalError:
+                notrain()
         else:
             invalidForm()
 
@@ -234,7 +237,7 @@ class Book(Screen):
         gg1 = [gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7]]
         i=0
         while i<len(p):
-            self.passenger.text+= p[i]+' - '+p[i+1]+"\n"
+            self.passenger.text += p[i]+' - '+p[i+1]+"\n"
             i+=2
 
         self.pnr.text="PNR: "+gg[0]
@@ -244,7 +247,12 @@ class Book(Screen):
         self.dt_mon.text="DATE: "+gg[2]+" "+gg[3]
 
 class TwoChoice(Screen):
-    pass
+    n = ObjectProperty(None)
+    current = ""
+
+    # def on_enter(self, *args):
+    #     password, name, created = db.get_user(self.current)
+    #     self.n.text = "Hi, " + name
         
 class PnrCheck(Screen):
     pnrinputa = ObjectProperty(None)
@@ -255,22 +263,16 @@ class PnrCheck(Screen):
     dt_mona= ObjectProperty(None)
     passengera= ObjectProperty(None)
     
-    # for i in file:
-    #     n = i
-    # print(n)
-    # print(type(n))
+    
     def search(self):
         if db2.validate(self.pnrinputa.text):
+                
+                self.passengera.text = "PASSENGER: "
                 current = self.pnrinputa.text
                 pnr,tx,dt,mon,fsc,fsn,tsc,tsn,passenger = db2.get_pnr(current)
-                # print(pnr)
-                # print(tx)
-                # print(passenger)
-                # print(type(passenger))
-                # res = passenger.strip('][').split(', ')
+                
                 passenger = ast.literal_eval(passenger)
-                # print(res)
-                # print(type(res))
+                
                 self.pnra.text="PNR: "+pnr
                 self.txa.text="TRAIN: "+tx.strip()
                 self.fsna.text="FROM: "+fsn
@@ -282,6 +284,27 @@ class PnrCheck(Screen):
                     i+=2
                 print(pnr)
                 print(tx)
+        else:
+            norecord()
+    def cancel(self):
+        a_file = open("MainDatabase.txt", "r")
+        a_file.seek(0,0)
+        lines = a_file.readlines()
+        a_file.close()
+        for i in lines:
+            # print(i)
+            # print(i[0:4])
+            if i[0:4] == self.pnrinputa.text:
+                # print(i)
+                lines.remove(i)
+        print(lines)    
+        new_file = open("MainDatabase.txt", "w+")
+
+        for line in lines:
+            new_file.write(line)
+
+        new_file.close()
+        importlib.reload(DataBase2)
 class MainWindow1(Screen):
     na = ObjectProperty(None)
     p_n = ObjectProperty(None)
@@ -337,10 +360,16 @@ def invalidLogin():
 def invalidForm():
     d2 = MDDialog(title='Invalid Form',text='Please fill in all inputs with valid information.',radius=[20,20,20,20])
     d2.open()
+def norecord():
+    d2 = MDDialog(title='No Record Found',radius=[20,20,20,20])
+    d2.open()
+def notrain():
+    d2 = MDDialog(title='Oops!',text='Something went wrong.It may cause due to following errors:\n\u2022Wrong Station names.Try Again!\n\u2022No Trains Found.',radius=[20,20,20,20])
+    d2.open()
 def invalidStation():
     Snackbar(
     text="Invalid Station! Try Again..",
-    snackbar_x="10dp",
+    snackbar_x="5dp",
     snackbar_y="10dp",
     ).open()
 def signup():
@@ -349,7 +378,7 @@ def signup():
 def validStation():
     Snackbar(
     text="Valid Station!",
-    snackbar_x="10dp",
+    snackbar_x="5dp",
     snackbar_y="10dp",
     ).open()
 

@@ -1,1 +1,1 @@
-['\n12304  NEW DELHI - HOWRAH Poorva SF Express\n', '13', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN']
+['\n12310  NEW DELHI - RAJENDRA NAGAR T Rajdhani Express\n', '13', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN']
