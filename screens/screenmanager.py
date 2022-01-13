@@ -11,6 +11,7 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.behaviors import FakeRectangularElevationBehavior
 import requests
 import json
+import ast
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from bs4 import BeautifulSoup
@@ -39,7 +40,7 @@ class LoginScreen2(MDScreen):
             if db.validate(self.email.text, self.password.text):
                 MainWindow.current = self.email.text
                 self.reset()
-                self.manager.current = "main"            
+                self.manager.current = "choose"            
             else:
                 invalidLogin()
         else:
@@ -228,6 +229,7 @@ class Book(Screen):
         
         gg = dbt3.get_pass()
         print(gg)
+        print(type(gg))
         pnr,tx,dt,mon,fsc,fsn,tsc,tsn,p = gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7],gg[8]
         gg1 = [gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7]]
         i=0
@@ -240,24 +242,52 @@ class Book(Screen):
         self.fsn.text="FROM: "+gg[5]
         self.tsn.text="TO: "+gg[7]
         self.dt_mon.text="DATE: "+gg[2]+" "+gg[3]
-        #tick = self.ids.ticket
-        #details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
-        #tick.add_widget(details)
-        #for i in gg1:
-            # pn = Label(text=i,size_hint_x=.2,color=(.06,.45,.45,1),pos_hint={"center_x": .65, "center_y": .4})
-            # details.add_widget(pn)
+
+class TwoChoice(Screen):
+    pass
         
-
-
+class PnrCheck(Screen):
+    pnrinputa = ObjectProperty(None)
+    pnra= ObjectProperty(None)
+    txa=ObjectProperty(None)
+    fsna=ObjectProperty(None)
+    tsna= ObjectProperty(None)
+    dt_mona= ObjectProperty(None)
+    passengera= ObjectProperty(None)
     
+    # for i in file:
+    #     n = i
+    # print(n)
+    # print(type(n))
+    def search(self):
+        if db2.validate(self.pnrinputa.text):
+                current = self.pnrinputa.text
+                pnr,tx,dt,mon,fsc,fsn,tsc,tsn,passenger = db2.get_pnr(current)
+                # print(pnr)
+                # print(tx)
+                # print(passenger)
+                # print(type(passenger))
+                # res = passenger.strip('][').split(', ')
+                passenger = ast.literal_eval(passenger)
+                # print(res)
+                # print(type(res))
+                self.pnra.text="PNR: "+pnr
+                self.txa.text="TRAIN: "+tx.strip()
+                self.fsna.text="FROM: "+fsn
+                self.tsna.text="TO: "+tsn
+                self.dt_mona.text="DATE: "+dt+" "+mon
+                i=0
+                while i<len(passenger):
+                    self.passengera.text += passenger[i]+' - '+passenger[i+1]+"\n"
+                    i+=2
+                print(pnr)
+                print(tx)
 class MainWindow1(Screen):
     na = ObjectProperty(None)
     p_n = ObjectProperty(None)
     p_a = ObjectProperty(None)
     passenger = []
-    file=open("MainDatabase.txt",'r')
-    pnr=str(len(file.readlines())+8769)
-    file.close()
+    
 
     def on_enter(self, *args):
         he = db1.get_train()
@@ -280,18 +310,22 @@ class MainWindow1(Screen):
             self.reset()
         else:
             invalidForm()
-
-    def bookbtn(self):
-        ab = db1.get_data()
-        tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
-        db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
-        dbt3.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.passenger)
-        self.manager.current = "bk"
-
+        Payment.current = self.passenger
     def reset(self):
         self.p_n.text = ""
         self.p_a.text = ""
 
+class Payment(Screen):
+    file=open("MainDatabase.txt",'r')
+    pnr=str(len(file.readlines())+8769)
+    file.close()
+    current = ""
+    def bookbtn(self):
+        ab = db1.get_data()
+        tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
+        db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
+        dbt3.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
+        self.manager.current = "bk"
 class MainScreenManager(ScreenManager):
     pass
 

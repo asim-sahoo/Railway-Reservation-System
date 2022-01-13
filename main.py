@@ -21,7 +21,10 @@ class Railway(MDApp, App):
         os.path.join(os.getcwd(), "screens\\login_screen\\loginscreen3.kv"),
         os.path.join(os.getcwd(), "screens\\login_screen\\mainwindow.kv"),
         os.path.join(os.getcwd(), "screens\\login_screen\\mainwindow1.kv"),
-        os.path.join(os.getcwd(), "screens\\login_screen\\book.kv")
+        os.path.join(os.getcwd(), "screens\\login_screen\\book.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\twochoice.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\pnrcheck.kv"),
+        os.path.join(os.getcwd(), "screens\\login_screen\\payment.kv")
     }
 
     # class to watch from *.py files
@@ -33,7 +36,8 @@ class Railway(MDApp, App):
         "LoginScreen3": "screens.screenmanager",
         "MainWindow": "screens.screenmanager",
         "MainWindow1": "screens.screenmanager",
-        "Book": "screens.screenmanager"
+        "Book": "screens.screenmanager",
+        "Payment": "screens.screenmanager"
     }
 
     # auto reload path

@@ -7,6 +7,7 @@
         source: "screen.png"
         size_hint: 1.1, 1.1
         pos_hint: {"center_x": .5, "center_y": .5}
+    
         
     MDLabel:
         id: na
@@ -74,11 +75,13 @@
             id: passenger
             cols: 1
     MDFillRoundFlatButton:
-        text :"Book"
+        text :"Proceed"
         pos_hint: {"center_x": 0.55, "center_y": 0.1}
         font_size: "20sp"
         size_hint: .1, .065
         font_name: "BPoppins"
         md_bg_color: 0,45/255,104/255,1
         on_press:
-            root.bookbtn()
+            root.manager.transition.direction = "left"
+            root.manager.current = "pay"
+            #root.bookbtn()

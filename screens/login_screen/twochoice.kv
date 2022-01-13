@@ -1,0 +1,49 @@
+<TwoChoice>:
+    name: "choose"
+    Image:
+        source: "screen.png"
+        size_hint: 1.1, 1.1
+        pos_hint: {"center_x": .5, "center_y": .5}
+    MDCard:  
+        size_hint: (.4,.6)
+        pos_hint: {"center_x": .5, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 10
+        radius: [35,35,35,35]
+        padding: 15
+    MDCard:  
+        size_hint: (.15,.25)
+        pos_hint: {"center_x": .6, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 1
+        radius: [15,15,15,15]
+        md_bg_color: 244/255, 222/255, 220/255, 1
+    MDCard:  
+        size_hint: (.15,.25)
+        pos_hint: {"center_x": .41, "center_y": .5}
+        md_bg_color: 1,1,1,1
+        elevation: 1
+        radius: [15,15,15,15]
+        md_bg_color: 244/255, 222/255, 220/255, 1
+    MDRoundFlatButton:
+        text :"Book"
+        pos_hint: {"center_x": 0.27, "center_y": 0.33}
+        font_size: "20sp"
+        size_hint: .28, .065
+        font_name: "BPoppins"
+        text_color: rgba(0,88,188,255)
+        line_color: rgba(0,88,188,255)
+        on_press: 
+            root.manager.transition.direction = "left"
+            root.manager.current = "main"
+    MDRoundFlatButton:
+        text :"Check PNR"
+        pos_hint: {"center_x": 0.27, "center_y": 0.25}
+        font_size: "20sp"
+        size_hint: .28, .065
+        font_name: "BPoppins"
+        text_color: rgba(0,88,188,255)
+        line_color: rgba(0,88,188,255)
+        on_press: 
+            root.manager.transition.direction = "left"
+            root.manager.current = "pnrch"
