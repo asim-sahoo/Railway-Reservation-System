@@ -15,19 +15,25 @@
         id: n
         halign: "left"
         pos_hint: {"center_x": 0.53,'center_y': .9297}
-        text: "Account Name: "
-        font_name: "BPoppins"
-        font_size: "45sp"
+        text: "Hi,"
+        font_name: "SPoppins"
+        font_size: "37sp"
         color: rgba(0,0,0,255)
+    # MDCard:  
+    #     size_hint: (.4,.3)
+    #     pos_hint: {"center_x": .5, "center_y": .7}
+    #     md_bg_color: 1,1,1,0.6
+    #     elevation: 15
+    #     radius: [15,15,15,15]
     MDTextField:
         id:f_st
         mode: "rectangle"
         hint_text: "From"
         helper_text: "Enter values in capital only"
         helper_text_mode: "on_focus"
-        pos_hint: {"center_x": .12, "center_y": .7}
+        pos_hint: {"center_x": .38, "center_y": .8}
         helper_text_mode: 'on_focus'
-        size_hint: .17, .07
+        size_hint: .13, .07
         cursor_color: 0,0,0,1
         cursor_width: "2sp"
         multiline: False
@@ -42,9 +48,9 @@
         hint_text: "To"
         helper_text: "Enter values in capital only"
         helper_text_mode: "on_focus"
-        pos_hint: {"center_x": .12, "center_y": .6}
+        pos_hint: {"center_x": .58, "center_y": .8}
         helper_text_mode: 'on_focus'
-        size_hint: .17, .07
+        size_hint: .13, .07
         cursor_color: 0,0,0,1
         cursor_width: "2sp"
         multiline: False
@@ -57,7 +63,7 @@
         id:date
         mode: "rectangle"
         hint_text: "Date"
-        pos_hint: {"center_x": .12, "center_y": .5}
+        pos_hint: {"center_x": .4, "center_y": .7}
         helper_text_mode: 'on_focus'
         size_hint: .17, .07
         cursor_color: 0,0,0,1
@@ -72,7 +78,7 @@
         id:month
         mode: "rectangle"
         hint_text: "Month"
-        pos_hint: {"center_x": .12, "center_y": .4}
+        pos_hint: {"center_x": .6, "center_y": .7}
         helper_text_mode: 'on_focus'
         size_hint: .17, .07
         cursor_color: 0,0,0,1
@@ -88,7 +94,7 @@
         id:day
         mode: "rectangle"
         hint_text: "Day"
-        pos_hint: {"center_x": .12, "center_y": .3}
+        pos_hint: {"center_x": .4, "center_y": .6}
         helper_text_mode: 'on_focus'
         size_hint: .17, .07
         cursor_color: 0,0,0,1
@@ -101,29 +107,23 @@
         hint_text_color: rgba(3, 144, 252,255)
     MDFillRoundFlatButton:
         text :"Show"
-        pos_hint: {"center_x": 0.08, "center_y": 0.15}
+        pos_hint: {"center_x": 0.6, "center_y": 0.595}
         font_size: "20sp"
-        size_hint: .1, .065
+        size_hint: .17, .06
         font_name: "BPoppins"
-        md_bg_color: 0,45/255,104/255,1
+        md_bg_color: rgba(0,88,188,255)
         on_press:
             root.Show()
-    MDFlatButton:
-        text :"Check"
-        pos_hint: {"center_x": 0.25, "center_y": 0.7}
-        font_size: "20sp"
-        size_hint: .1, .065
-        font_name: "BPoppins"
-        md_bg_color: 0,45/255,104/255,1
+    MDIconButton:
+        icon:"check-bold"
+        pos_hint: {"center_x": 0.475, "center_y": 0.8}
+        user_font_size: "35sp"
         on_press:
             root.check()
-    MDFlatButton:
-        text :"Check"
-        pos_hint: {"center_x": 0.25, "center_y": 0.6}
-        font_size: "20sp"
-        size_hint: .1, .065
-        font_name: "BPoppins"
-        md_bg_color: 0,45/255,104/255,1
+    MDIconButton:
+        icon: "check-bold"
+        pos_hint: {"center_x": 0.675, "center_y": 0.8}
+        user_font_size: "35sp"
         on_press:
             root.check2()
     MDIconButton:
@@ -135,10 +135,10 @@
             root.manager.transition.direction = "down"
     
     MDCard:  
-        size_hint: (.4,.7)
-        pos_hint: {"center_x": .65, "center_y": .5}
+        size_hint: (.45,.45)
+        pos_hint: {"center_x": .5, "center_y": .28}
         md_bg_color: 1,1,1,1
-        elevation: 10
+        elevation: 15
         radius: [35,35,35,35]
         padding: 15
         ScrollView:
