@@ -67,10 +67,10 @@ class LoginScreen3(MDScreen):
     namee = ObjectProperty(None)
     email = ObjectProperty(None)
     password = ObjectProperty(None)
-
+    chpassw = ObjectProperty(None)
     def submit(self):
-        if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0:
-            if self.password.text != "":
+        if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0 and self.password.text != "" and self.chpassw.text != "" :
+            if self.chpassw.text == self.password.text:
                 if db.validate(self.email.text, self.password.text):
                     self.manager.current = "loginscreen2"
                     alreadyexists()
@@ -80,7 +80,7 @@ class LoginScreen3(MDScreen):
                     self.manager.current = "loginscreen2"
                     signup()
             else:
-                invalidForm()
+                donotmatch()
         else:
             invalidForm()
 
@@ -462,6 +462,9 @@ def signup():
     d2.open()
 def alreadyexists():
     d2 = MDDialog(text='Account already exists\nSign-in to continue!',radius=[20,20,20,20])
+    d2.open()
+def donotmatch():
+    d2 = MDDialog(text='Passwords do not match.',radius=[20,20,20,20])
     d2.open()
 def validStation():
     Snackbar(
