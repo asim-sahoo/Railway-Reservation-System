@@ -24,10 +24,18 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 class LoginScreen(MDScreen):
-    pass
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 
 class LoginScreen1(MDScreen):
-    pass
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 
 class LoginScreen2(MDScreen):
     email = ObjectProperty(None)
@@ -49,7 +57,12 @@ class LoginScreen2(MDScreen):
         self.email.text = ""
         self.password.text = ""
     
-
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
+    
 class LoginScreen3(MDScreen):
     namee = ObjectProperty(None)
     email = ObjectProperty(None)
