@@ -71,10 +71,14 @@ class LoginScreen3(MDScreen):
     def submit(self):
         if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0:
             if self.password.text != "":
-                db.add_user(self.email.text, self.password.text, self.namee.text)
-                self.reset()
-                self.manager.current = "loginscreen2"
-                signup()
+                if db.validate(self.email.text, self.password.text):
+                    self.manager.current = "loginscreen2"
+                    alreadyexists()
+                else: 
+                    db.add_user(self.email.text, self.password.text, self.namee.text)
+                    self.reset()
+                    self.manager.current = "loginscreen2"
+                    signup()
             else:
                 invalidForm()
         else:
@@ -104,45 +108,51 @@ class MainWindow(Screen):
         password, name, created = db.get_user(self.current)
         self.n.text = "Hi, " + name
     def check(self):
-        url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
-        st1 = self.f_st.text
-        querystring1 = {"station":st1}
-        headers1 = {
-            'x-rapidapi-host': "indianrailways.p.rapidapi.com",
-            'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
-            }
-        response = requests.request("GET", url1, headers=headers1, params=querystring1)
-        i1 = response.__dict__['_content'].decode("utf-8")
-        res1 = json.loads(i1)["stations"]
+        if self.f_st.text!='':
+            url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
+            st1 = self.f_st.text
+            querystring1 = {"station":st1}
+            headers1 = {
+                'x-rapidapi-host': "indianrailways.p.rapidapi.com",
+                'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
+                }
+            response = requests.request("GET", url1, headers=headers1, params=querystring1)
+            i1 = response.__dict__['_content'].decode("utf-8")
+            res1 = json.loads(i1)["stations"]
 
-        if len(res1)>1:
-            invalidStation()
+            if len(res1)>1:
+                invalidStation()
+            else:
+                for i1 in res1:
+                    s = st1
+                    if i1["stationName"] == s or s in i1["stationName"]:
+                        n1 = i1["stationCode"]
+                validStation()
         else:
-            for i1 in res1:
-                s = st1
-                if i1["stationName"] == s or s in i1["stationName"]:
-                    n1 = i1["stationCode"]
-            validStation()
+            invalidForm()
     def check2(self):
-        url2 = "https://indianrailways.p.rapidapi.com/findstations.php"
-        st2 = self.t_st.text
-        querystring2 = {"station":st2}
-        headers2 = {
-            'x-rapidapi-host': "indianrailways.p.rapidapi.com",
-            'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
-            }
-        response = requests.request("GET", url2, headers=headers2, params=querystring2)
-        i2 = response.__dict__['_content'].decode("utf-8")
-        res2 = json.loads(i2)["stations"]
-        
-        if len(res2)>1:
-            invalidStation()         
+        if self.t_st.text!='':
+            url2 = "https://indianrailways.p.rapidapi.com/findstations.php"
+            st2 = self.t_st.text
+            querystring2 = {"station":st2}
+            headers2 = {
+                'x-rapidapi-host': "indianrailways.p.rapidapi.com",
+                'x-rapidapi-key': "d1fb13fbb2msh6b11d47bc02c3aep17e760jsn49deee70a758"
+                }
+            response = requests.request("GET", url2, headers=headers2, params=querystring2)
+            i2 = response.__dict__['_content'].decode("utf-8")
+            res2 = json.loads(i2)["stations"]
+            
+            if len(res2)>1:
+                invalidStation()         
+            else:
+                for i2 in res2:
+                    s2 = st2
+                    if i2["stationName"] == s2 or s2 in i2["stationName"]:
+                        n2 = i2["stationCode"]
+                validStation()
         else:
-            for i2 in res2:
-                s2 = st2
-                if i2["stationName"] == s2 or s2 in i2["stationName"]:
-                    n2 = i2["stationCode"]
-            validStation()
+            invalidForm()
 
     def Show(self):
         if self.f_st.text != "" and self.t_st.text != "" and self.date.text != "" and self.month.text != "" and self.day.text != "":
@@ -216,7 +226,6 @@ class MainWindow(Screen):
                     db1.add_train(z1,date,month,n1,st1,n2,st2)
                     self.ids.details.clear_widgets()
                     self.manager.current = "main1"
-                    print(z1)
                 
                 for i in l:
                     
@@ -256,8 +265,6 @@ class Book(Screen):
 
         
         gg = dbt3.get_pass()
-        print(gg)
-        print(type(gg))
         pnr,tx,dt,mon,fsc,fsn,tsc,tsn,p = gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7],gg[8]
         gg1 = [gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7]]
         i=0
@@ -316,8 +323,10 @@ class PnrCheck(Screen):
                 self.passengera.text = "PASSENGER: "
                 current = self.pnrinputa.text
                 pnr,tx,dt,mon,fsc,fsn,tsc,tsn,passenger = db2.get_pnr(current)
-                
-                passenger = ast.literal_eval(passenger)
+                if isinstance(passenger,list):
+                    pass
+                else:
+                    passenger = ast.literal_eval(passenger)
                 
                 self.pnra.text="PNR: "+pnr
                 self.txa.text="TRAIN: "+tx.strip()
@@ -436,7 +445,7 @@ def invalidStation():
     Snackbar(
     text="Invalid Station! Try Again..",
     snackbar_x="5dp",
-    snackbar_y="10dp",
+    snackbar_y="5dp",
     ).open()
 def tryagain():
     d2 = MDDialog(text='Something went Wrong!',radius=[20,20,20,20])
@@ -444,11 +453,14 @@ def tryagain():
 def signup():
     d2 = MDDialog(text='Signed Up Successfully.',radius=[20,20,20,20])
     d2.open()
+def alreadyexists():
+    d2 = MDDialog(text='Account already exists\nSign-in to continue!',radius=[20,20,20,20])
+    d2.open()
 def validStation():
     Snackbar(
     text="Valid Station!",
     snackbar_x="5dp",
-    snackbar_y="10dp",
+    snackbar_y="5dp",
     ).open()
 
 
