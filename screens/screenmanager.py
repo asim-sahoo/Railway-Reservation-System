@@ -280,6 +280,7 @@ class Book(Screen):
         chr_options.add_experimental_option("detach", True)
         chr_driver = webdriver.Chrome(options=chr_options)
         chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
+    
 class TwoChoice(Screen):
     n = ObjectProperty(None)
     current = ""
@@ -305,12 +306,13 @@ class PnrCheck(Screen):
     
     
     def search(self):
+        
         import database2
         importlib.reload(database2)
         from database2 import DataBase2
         db2a = DataBase2("MainDatabase.txt")
         if db2a.validate(self.pnrinputa.text):
-                
+            try:
                 self.passengera.text = "PASSENGER: "
                 current = self.pnrinputa.text
                 pnr,tx,dt,mon,fsc,fsn,tsc,tsn,passenger = db2.get_pnr(current)
@@ -326,6 +328,8 @@ class PnrCheck(Screen):
                 while i<len(passenger):
                     self.passengera.text += passenger[i]+' - '+passenger[i+1]+"\n"
                     i+=2
+            except ValueError:
+                tryagain()
         else:
             norecord()
 
@@ -434,6 +438,9 @@ def invalidStation():
     snackbar_x="5dp",
     snackbar_y="10dp",
     ).open()
+def tryagain():
+    d2 = MDDialog(text='Something went Wrong!',radius=[20,20,20,20])
+    d2.open()
 def signup():
     d2 = MDDialog(text='Signed Up Successfully.',radius=[20,20,20,20])
     d2.open()

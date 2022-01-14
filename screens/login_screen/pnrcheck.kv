@@ -17,7 +17,7 @@
         hint_text: "PNR"
         helper_text: "Enter PNR no."
         helper_text_mode: "on_focus"
-        pos_hint: {"center_x": .443, "center_y": .8}
+        pos_hint: {"center_x": .443, "center_y": .85}
         helper_text_mode: 'on_focus'
         size_hint: .15, .073
         cursor_color: 0,0,0,1
@@ -30,7 +30,7 @@
         hint_text_color: rgba(3, 144, 252,255)
     MDFillRoundFlatButton:
         text :"SEARCH"
-        pos_hint: {"center_x": 0.5891, "center_y": 0.7987}
+        pos_hint: {"center_x": 0.5891, "center_y": 0.8487}
         font_size: "20sp"
         size_hint: .1, .063
         font_name: "BPoppins"
@@ -38,17 +38,27 @@
         on_press:
             root.search()
     MDFillRoundFlatButton:
-        text :"Cancel"
-        pos_hint: {"center_x": 0.7, "center_y": 0.7987}
+        text :"Book Ticket"
+        pos_hint: {"center_x": 0.58, "center_y": 0.13}
         font_size: "20sp"
-        size_hint: .1, .063
+        size_hint: .13, .063
+        font_name: "BPoppins"
+        md_bg_color: 0,45/255,104/255,1
+        on_press:
+            root.manager.transition.direction = "left"
+            root.manager.current = "main"
+    MDRoundFlatButton:
+        text: "Cancel Ticket"
+        pos_hint: {"center_x": 0.42, "center_y": 0.13}
+        font_size: "20sp"
+        size_hint: .13, .063
         font_name: "BPoppins"
         md_bg_color: 0,45/255,104/255,1
         on_press:
             root.cancel()
     MDCard:    
         size_hint: (.3,.57)
-        pos_hint: {"center_x": .5, "center_y": .43}
+        pos_hint: {"center_x": .5, "center_y": .5}
         md_bg_color: 1,1,1,1
         elevation: 10
         radius: [8,8,8,8]
