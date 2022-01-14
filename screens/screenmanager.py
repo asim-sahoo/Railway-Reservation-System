@@ -34,17 +34,16 @@ class LoginScreen2(MDScreen):
     password = ObjectProperty(None)
 
     def loginBtn(self):
-        # if self.email.text != "" and self.password.text != "":
-        #     if db.validate(self.email.text, self.password.text):
-        #         MainWindow.current = self.email.text
-        #         TwoChoice.current = self.email.text
-        #         self.reset()
-        #         self.manager.current = "choose"            
-        #     else:
-        #         invalidLogin()
-        # else:
-        #     invalidLogin()
-        self.manager.current = "choose"
+        if self.email.text != "" and self.password.text != "":
+            if db.validate(self.email.text, self.password.text):
+                MainWindow.current = self.email.text
+                TwoChoice.current = self.email.text
+                self.reset()
+                self.manager.current = "choose"            
+            else:
+                invalidLogin()
+        else:
+            invalidLogin()
 
     def reset(self):
         self.email.text = ""
@@ -83,9 +82,9 @@ class MainWindow(Screen):
     details = ObjectProperty(None)
     current = ""
 
-    # def on_enter(self, *args):
-    #     password, name, created = db.get_user(self.current)
-    #     self.n.text = "Hi, " + name
+    def on_enter(self, *args):
+        password, name, created = db.get_user(self.current)
+        self.n.text = "Hi, " + name
     def check(self):
         url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
         st1 = self.f_st.text
@@ -261,9 +260,9 @@ class TwoChoice(Screen):
     n = ObjectProperty(None)
     current = ""
 
-    # def on_enter(self, *args):
-    #     password, name, created = db.get_user(self.current)
-    #     self.n.text = "Hi, " + name
+    def on_enter(self, *args):
+        password, name, created = db.get_user(self.current)
+        self.n.text = "Hi, " + name
         
 class PnrCheck(Screen):
     pnrinputa = ObjectProperty(None)
