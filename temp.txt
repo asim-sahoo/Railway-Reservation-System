@@ -1,1 +1,1 @@
-['8772', '\n03392  NEW DELHI - RAJGIR Clone Special\n', '14', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['afaf', '525']]
+['8771', '\n22202  PURI - KOLKATA SEALDAH Duronto Express\n', '14', 'Jan', 'KGP', 'KHARAGPUR', 'KOAA', 'KOLKATA', ['sagnik', '12']]

@@ -19,12 +19,6 @@
         font_name: "SPoppins"
         font_size: "37sp"
         color: rgba(0,0,0,255)
-    # MDCard:  
-    #     size_hint: (.4,.3)
-    #     pos_hint: {"center_x": .5, "center_y": .7}
-    #     md_bg_color: 1,1,1,0.6
-    #     elevation: 15
-    #     radius: [15,15,15,15]
     MDTextField:
         id:f_st
         mode: "rectangle"
@@ -89,7 +83,6 @@
         font_name: "SPoppins"
         font_size: "14sp"
         hint_text_color: rgba(3, 144, 252,255)
-
     MDTextField:
         id:day
         mode: "rectangle"
@@ -128,7 +121,7 @@
             root.check2()
     MDIconButton:
         icon:"logout"
-        pos_hint: {"center_x": 0.95, "center_y": .94}
+        pos_hint: {"center_x": 0.963, "center_y": .05}
         user_font_size: "40sp"
         on_release:
             root.manager.current = "loginscreen2"
@@ -136,17 +129,18 @@
     MDIconButton:
         ripple_scale: 0
         icon: "home-outline"
-        pos_hint: {"center_x": 0.95, "center_y": .89}
+        pos_hint: {"center_x": 0.96, "center_y": .95}
         user_font_size: "40sp"
         on_press:
             root.manager.transition.direction = "right"
             root.manager.current = "choose"
-    # MDFloatingActionButtonSpeedDial:
-        
-    #     on_kv_post: self.icon = 'account'
-    #     data: {'Home': 'home-outline','Logout': 'logout',}
-    #     root_button_anim: False   
-    #     callback: app.call  
+    MDIconButton:
+        ripple_scale: 0
+        icon: "github"
+        pos_hint: {"center_x": 0.96, "center_y": .13}
+        user_font_size: "40sp"
+        on_press:
+            root.git()
     MDCard:  
         size_hint: (.45,.45)
         pos_hint: {"center_x": .5, "center_y": .28}
@@ -156,4 +150,4 @@
         padding: 15
         ScrollView:
             MDList:
-                id: details               
+                id: details

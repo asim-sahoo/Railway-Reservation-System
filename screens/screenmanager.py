@@ -20,6 +20,8 @@ from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.list import OneLineListItem
 import importlib
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 class LoginScreen(MDScreen):
     pass
@@ -216,7 +218,12 @@ class MainWindow(Screen):
         self.date.text = ""
         self.month.text = ""
         self.day.text = ""
-
+        
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 class Book(Screen):
     pnr=ObjectProperty(None)
     tx=ObjectProperty(None)

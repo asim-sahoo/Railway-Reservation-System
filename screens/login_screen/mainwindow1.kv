@@ -7,24 +7,21 @@
         source: "screen.png"
         size_hint: 1.1, 1.1
         pos_hint: {"center_x": .5, "center_y": .5}
-    
-        
     MDLabel:
         id: na
-        halign: "left"
-        pos_hint: {"center_x": 0.53,'center_y': .9297}
+        halign: "center"
+        pos_hint: {"center_x": 0.5,'center_y': .85}
         text:
         font_name: "SPoppins"
         font_size: "20sp"
         color: rgba(0,0,0,255)
-
     MDTextField:
         id:p_n
         mode: "rectangle"
         hint_text: "Name"
         helper_text: "Enter your name"
         helper_text_mode: "on_focus"
-        pos_hint: {"center_x": .12, "center_y": .7}
+        pos_hint: {"center_x": .4, "center_y": .77}
         helper_text_mode: 'on_focus'
         size_hint: .17, .07
         cursor_color: 0,0,0,1
@@ -35,14 +32,13 @@
         font_name: "SPoppins"
         font_size: "14sp"
         hint_text_color: rgba(3, 144, 252,255)
-
     MDTextField:
         id:p_a
         mode: "rectangle"
         hint_text: "Age"
         helper_text: "Enter your age"
         helper_text_mode: "on_focus"
-        pos_hint: {"center_x": .12, "center_y": .6}
+        pos_hint: {"center_x": .6, "center_y": .77}
         helper_text_mode: 'on_focus'
         size_hint: .17, .07
         cursor_color: 0,0,0,1
@@ -53,20 +49,29 @@
         font_name: "SPoppins"
         font_size: "14sp"
         hint_text_color: rgba(3, 144, 252,255)
-
-    MDFillRoundFlatButton:
+    MDRoundFlatButton:
         text :"Add Passenger"
-        pos_hint: {"center_x": 0.08, "center_y": 0.15}
+        pos_hint: {"center_x": 0.4, "center_y": 0.67}
         font_size: "20sp"
-        size_hint: .125, .065
+        size_hint: .175, .06
         font_name: "BPoppins"
-        md_bg_color: 0,45/255,104/255,1
+        text_color: rgba(0,88,188,255)
+        line_color: rgba(0,88,188,255)
         on_press:
             root.add_p()
-
+    MDFillRoundFlatButton:
+        text :"Proceed"
+        pos_hint: {"center_x": 0.6, "center_y": 0.67}
+        font_size: "20sp"
+        size_hint: .175, .06
+        font_name: "BPoppins"
+        md_bg_color: rgba(0,88,188,255)
+        on_press:
+            root.manager.transition.direction = "left"
+            root.manager.current = "pay"
     MDCard:    
-        size_hint: (.4,.7)
-        pos_hint: {"center_x": .65, "center_y": .5}
+        size_hint: (.3,.45)
+        pos_hint: {"center_x": .5, "center_y": .37}
         md_bg_color: 1,1,1,1
         elevation: 10
         radius: [35,35,35,35]
@@ -74,27 +79,25 @@
         GridLayout:
             id: passenger
             cols: 1
-    MDFillRoundFlatButton:
-        text :"Proceed"
-        pos_hint: {"center_x": 0.55, "center_y": 0.1}
-        font_size: "20sp"
-        size_hint: .1, .065
-        font_name: "BPoppins"
-        md_bg_color: 0,45/255,104/255,1
-        on_press:
-            root.manager.transition.direction = "left"
-            root.manager.current = "pay"
     MDIconButton:
         icon:"logout"
-        pos_hint: {"center_x": 0.95, "center_y": .94}
+        pos_hint: {"center_x": 0.963, "center_y": .05}
         user_font_size: "40sp"
         on_release:
             root.manager.current = "loginscreen2"
             root.manager.transition.direction = "down"
     MDIconButton:
-        icon: "home"
-        pos_hint: {"center_x": 0.95, "center_y": .89}
+        ripple_scale: 0
+        icon: "home-outline"
+        pos_hint: {"center_x": 0.96, "center_y": .95}
         user_font_size: "40sp"
         on_press:
             root.manager.transition.direction = "right"
             root.manager.current = "choose"
+    MDIconButton:
+        ripple_scale: 0
+        icon: "github"
+        pos_hint: {"center_x": 0.96, "center_y": .13}
+        user_font_size: "40sp"
+        on_press:
+            root.git()
