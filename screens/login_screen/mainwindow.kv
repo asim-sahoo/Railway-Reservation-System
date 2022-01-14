@@ -134,12 +134,19 @@
             root.manager.current = "loginscreen2"
             root.manager.transition.direction = "down"
     MDIconButton:
+        ripple_scale: 0
         icon: "home-outline"
         pos_hint: {"center_x": 0.95, "center_y": .89}
         user_font_size: "40sp"
         on_press:
             root.manager.transition.direction = "right"
             root.manager.current = "choose"
+    # MDFloatingActionButtonSpeedDial:
+        
+    #     on_kv_post: self.icon = 'account'
+    #     data: {'Home': 'home-outline','Logout': 'logout',}
+    #     root_button_anim: False   
+    #     callback: app.call  
     MDCard:  
         size_hint: (.45,.45)
         pos_hint: {"center_x": .5, "center_y": .28}

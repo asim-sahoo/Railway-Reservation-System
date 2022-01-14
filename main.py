@@ -1,4 +1,6 @@
 import os
+from kivymd.uix.screen import Screen
+from kivy.properties import ObjectProperty
 from kivymd.app import MDApp
 from kaki.app import App
 from kivy.factory import Factory
@@ -6,6 +8,7 @@ from kivy.core.window import Window
 from kivy.core.text import LabelBase
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
+
 Window.size = (1920,1080)
 # main app class for kaki app with kivymd modules
 class Railway(MDApp, App):
@@ -47,7 +50,7 @@ class Railway(MDApp, App):
 
     def build_app(self):
         return Factory.MainScreenManager()
-
+    
     def show(self):
         close = MDFlatButton(text="OK", on_release=self.dialog_close)       
         self.d = MDDialog(title="COVID 19 Alert:",text="\u2022 Passengers are advised to wear a mask, carry sanitizer, and follow social distancing norms\n\n\u2022 All Passenger to kindly note that on arrival at their destination, the traveling passengers will have to adhere to such health protocols as are prescribed by the destination State/UT.For other states, State Govt websites may be visited to ascertain the same.\n\n\u2022 No blanket and linen shall be provided in the train. Although Take Away Bedroll Kit is available in some trains on payment basis.",radius=[20,20,20,20], buttons=[close])

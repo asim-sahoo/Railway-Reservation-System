@@ -6,13 +6,64 @@
     tsn: tsn
     dt_mon: dt_mon
     passenger: passenger
+    fromhead: fromhead
+    tohead: tohead
+    fromst: fromst 
+    tost: tost
     Image:
         source: "screen.png"
         size_hint: 1.1, 1.1
         pos_hint: {"center_x": .5, "center_y": .5}
     MDCard:    
+        size_hint:  (.3,.23)
+        pos_hint: {"center_x": .5, "center_y": .8}
+        md_bg_color: 1,1,1,1
+        elevation: 10
+        radius: [10,10,10,10]
+        FitImage:
+            source: "screen1.png"
+            size_hint: 1.1, 1.1
+            pos_hint: {"center_x": .5, "center_y": .5}
+            radius: [10,10,10,10]
+    Image:
+        source: "decision-making.png"
+        size_hint: .26, .26
+        pos_hint: {"center_x": .5, "center_y": .82}
+    MDLabel:
+        id: fromhead  
+        text:"PNR:"
+        font_name: "MPoppins"
+        font_size: "32sp"
+        halign: "center"
+        pos_hint: {"center_x": .41, "center_y": .82}
+        color: rgba(0,0,0,255)
+    MDLabel:
+        id: tohead
+        text:"TRAIN:"
+        font_name: "MPoppins"
+        font_size: "32sp"
+        halign: "center"
+        pos_hint: {"center_x": .59, "center_y": .82}
+        color: rgba(0,0,0,255)
+    MDLabel:
+        id: fromst  
+        text:"PNR:"
+        font_name: "SPoppins"
+        font_size: "16sp"
+        halign: "center"
+        pos_hint: {"center_x": .41, "center_y": .75}
+        color: rgba(0,0,0,255)
+    MDLabel:
+        id: tost
+        text:"TRAIN:"
+        font_name: "SPoppins"
+        font_size: "16sp"
+        halign: "center"
+        pos_hint: {"center_x": .59, "center_y": .75}
+        color: rgba(0,0,0,255)
+    MDCard:    
         size_hint:  (.3,.57)
-        pos_hint: {"center_x": .5, "center_y": .5}
+        pos_hint: {"center_x": .5, "center_y": .37}
         md_bg_color: 1,1,1,1
         elevation: 10
         radius: [8,8,8,8]

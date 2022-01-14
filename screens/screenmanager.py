@@ -202,16 +202,13 @@ class MainWindow(Screen):
                 for i in l:
                     
                     self.ids.details.add_widget(OneLineListItem(text=i, on_press=z))
-                
-
-                    
-                
-                
+                               
                 self.reset()
             except UnboundLocalError:
                 notrain()
         else:
             invalidForm()
+    
 
     def reset(self):
         self.f_st.text = ""
@@ -227,6 +224,10 @@ class Book(Screen):
     tsn=ObjectProperty(None)
     dt_mon=ObjectProperty(None)
     passenger=ObjectProperty(None)
+    fromhead= ObjectProperty(None)
+    tohead=ObjectProperty(None)
+    fromst= ObjectProperty(None)
+    tost = ObjectProperty(None)
     def on_enter(self, *args):
 
         
@@ -245,7 +246,10 @@ class Book(Screen):
         self.fsn.text="FROM: "+gg[5]
         self.tsn.text="TO: "+gg[7]
         self.dt_mon.text="DATE: "+gg[2]+" "+gg[3]
-
+        self.fromhead.text=gg[4]
+        self.tohead.text=gg[6]
+        self.fromst.text=gg[5]
+        self.tost.text=gg[7]
 class TwoChoice(Screen):
     n = ObjectProperty(None)
     current = ""
@@ -265,7 +269,11 @@ class PnrCheck(Screen):
     
     
     def search(self):
-        if db2.validate(self.pnrinputa.text):
+        import database2
+        importlib.reload(database2)
+        from database2 import DataBase2
+        db2a = DataBase2("MainDatabase.txt")
+        if db2a.validate(self.pnrinputa.text):
                 
                 self.passengera.text = "PASSENGER: "
                 current = self.pnrinputa.text
@@ -282,29 +290,31 @@ class PnrCheck(Screen):
                 while i<len(passenger):
                     self.passengera.text += passenger[i]+' - '+passenger[i+1]+"\n"
                     i+=2
-                print(pnr)
-                print(tx)
         else:
             norecord()
+
     def cancel(self):
         a_file = open("MainDatabase.txt", "r")
         a_file.seek(0,0)
         lines = a_file.readlines()
         a_file.close()
         for i in lines:
-            # print(i)
-            # print(i[0:4])
+            
             if i[0:4] == self.pnrinputa.text:
-                # print(i)
-                lines.remove(i)
-        print(lines)    
+                lines.remove(i)    
         new_file = open("MainDatabase.txt", "w+")
 
         for line in lines:
             new_file.write(line)
 
         new_file.close()
-        importlib.reload(DataBase2)
+        self.pnra.text=""
+        self.txa.text=""
+        self.fsna.text=""
+        self.tsna.text=""
+        self.dt_mona.text=""
+        self.passengera.text=""
+        
 class MainWindow1(Screen):
     na = ObjectProperty(None)
     p_n = ObjectProperty(None)
@@ -361,7 +371,7 @@ def invalidForm():
     d2 = MDDialog(title='Invalid Form',text='Please fill in all inputs with valid information.',radius=[20,20,20,20])
     d2.open()
 def norecord():
-    d2 = MDDialog(title='No Record Found',radius=[20,20,20,20])
+    d2 = MDDialog(text='No Record Found',radius=[20,20,20,20])
     d2.open()
 def notrain():
     d2 = MDDialog(title='Oops!',text='Something went wrong.It may cause due to following errors:\n\u2022Wrong Station names.Try Again!\n\u2022No Trains Found.',radius=[20,20,20,20])
