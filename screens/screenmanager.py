@@ -412,12 +412,19 @@ class Payment(Screen):
     pnr=str(len(file.readlines())+8769)
     file.close()
     current = ""
+    valid = ObjectProperty(None)
+    cvv = ObjectProperty(None)
+    cardnum = ObjectProperty(None)
+    namea = ObjectProperty(None)
     def bookbtn(self):
-        ab = db1.get_data()
-        tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
-        db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
-        dbt3.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
-        self.manager.current = "bk"
+        if self.valid.text != "" and self.cardnum.text != "" and self.cvv.text != "" and self.valid.text.count("/") == 1 and self.namea.text != "":
+            ab = db1.get_data()
+            tx,dt,mon,fsc,fsn,tsc,tsn=ab[0],ab[1],ab[2],ab[3],ab[4],ab[5],ab[6]
+            db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
+            dbt3.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
+            self.manager.current = "bk"
+        else:
+            invalidForm()
     
     def git(self):
         chr_options = Options()

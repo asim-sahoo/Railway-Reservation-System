@@ -1,1 +1,1 @@
-['8775', '\n12514  GUWAHATI - SECUNDERABAD SF Express\n', '14', 'Jan', 'KOAA', 'KOLKATA', 'KGP', 'KHARAGPUR', ['seventhtry', '7', 'eighttry', '8']]
+['8776', '\n12310  NEW DELHI - RAJENDRA NAGAR T Rajdhani Express\n', '14', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['Asim Sahoo', '18']]
