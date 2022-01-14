@@ -71,6 +71,11 @@ class LoginScreen3(MDScreen):
         self.email.text = ""
         self.password.text = ""
         self.namee.text = ""
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 
 class MainWindow(Screen):
     n = ObjectProperty(None)
@@ -256,6 +261,12 @@ class Book(Screen):
         self.tohead.text=gg[6]
         self.fromst.text=gg[5]
         self.tost.text=gg[7]
+    
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 class TwoChoice(Screen):
     n = ObjectProperty(None)
     current = ""
@@ -263,6 +274,12 @@ class TwoChoice(Screen):
     def on_enter(self, *args):
         password, name, created = db.get_user(self.current)
         self.n.text = "Hi, " + name
+    
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
         
 class PnrCheck(Screen):
     pnrinputa = ObjectProperty(None)
@@ -320,6 +337,12 @@ class PnrCheck(Screen):
         self.tsna.text=""
         self.dt_mona.text=""
         self.passengera.text=""
+    
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
         
 class MainWindow1(Screen):
     na = ObjectProperty(None)
@@ -353,7 +376,11 @@ class MainWindow1(Screen):
     def reset(self):
         self.p_n.text = ""
         self.p_a.text = ""
-
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 class Payment(Screen):
     file=open("MainDatabase.txt",'r')
     pnr=str(len(file.readlines())+8769)
@@ -365,6 +392,12 @@ class Payment(Screen):
         db2.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
         dbt3.add_details(self.pnr,tx,dt,mon,fsc,fsn,tsc,tsn,self.current)
         self.manager.current = "bk"
+    
+    def git(self):
+        chr_options = Options()
+        chr_options.add_experimental_option("detach", True)
+        chr_driver = webdriver.Chrome(options=chr_options)
+        chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 class MainScreenManager(ScreenManager):
     pass
 
