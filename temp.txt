@@ -1,1 +1,1 @@
-['8775', '\n12310  NEW DELHI - RAJENDRA NAGAR T Rajdhani Express\n', '15', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['User1', '12', 'Passenger 2', '16', 'Passenger 3', '18']]
+['8770', '\n12394  NEW DELHI - RAJENDRA NAGAR T Sampoorna Kranti SF Exp\n', '18', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['asim', '44']]

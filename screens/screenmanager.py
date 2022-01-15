@@ -20,8 +20,15 @@ from kivymd.uix.list import OneLineListItem
 import importlib
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfgen import canvas 
+from reportlab.pdfgen import canvas
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
+import subprocess
 class LoginScreen(MDScreen):
+    
     def git(self):
         chr_options = Options()
         chr_options.add_experimental_option("detach", True)
@@ -29,6 +36,7 @@ class LoginScreen(MDScreen):
         chr_driver.get('https://github.com/asimgeek/Railway-Reservation-System')
 
 class LoginScreen1(MDScreen):
+
     def git(self):
         chr_options = Options()
         chr_options.add_experimental_option("detach", True)
@@ -39,6 +47,7 @@ class LoginScreen2(MDScreen):
     email = ObjectProperty(None)
     password = ObjectProperty(None)
     toogle = ObjectProperty(None)
+
     def loginBtn(self):
         if self.email.text != "" and self.password.text != "":
             if db.validate(self.email.text, self.password.text):
@@ -76,6 +85,7 @@ class LoginScreen3(MDScreen):
     chpassw = ObjectProperty(None)
     toogle = ObjectProperty(None)
     tooglea = ObjectProperty(None)
+
     def submit(self):
         if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0 and self.password.text != "" and self.chpassw.text != "" :
             if self.chpassw.text == self.password.text:
@@ -91,6 +101,7 @@ class LoginScreen3(MDScreen):
                 donotmatch()
         else:
             invalidForm()
+
     def tooglevisibility(self):
         if self.password.password == True:
             self.toogle.icon = "eye-off"
@@ -112,6 +123,7 @@ class LoginScreen3(MDScreen):
         self.password.text = ""
         self.chpassw.text = ""
         self.namee.text = ""
+
     def git(self):
         chr_options = Options()
         chr_options.add_experimental_option("detach", True)
@@ -131,6 +143,7 @@ class MainWindow(Screen):
     def on_enter(self, *args):
         password, name, created = db.get_user(self.current)
         self.n.text = "Hi, " + name
+
     def check(self):
         if self.f_st.text!='':
             url1 = "https://indianrailways.p.rapidapi.com/findstations.php"
@@ -154,6 +167,7 @@ class MainWindow(Screen):
                 validStation()
         else:
             invalidForm()
+
     def check2(self):
         if self.t_st.text!='':
             url2 = "https://indianrailways.p.rapidapi.com/findstations.php"
@@ -261,7 +275,6 @@ class MainWindow(Screen):
         else:
             invalidForm()
     
-
     def reset(self):
         self.f_st.text = ""
         self.t_st.text = ""
@@ -285,17 +298,16 @@ class Book(Screen):
     tohead=ObjectProperty(None)
     fromst= ObjectProperty(None)
     tost = ObjectProperty(None)
-    def on_enter(self, *args):
 
-        
+    def on_enter(self, *args):       
         gg = dbt3.get_pass()
         pnr,tx,dt,mon,fsc,fsn,tsc,tsn,p = gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7],gg[8]
         gg1 = [gg[0],gg[1],gg[2],gg[3],gg[4],gg[5],gg[6],gg[7]]
+        
         i=0
         while i<len(p):
             self.passenger.text += p[i]+' - '+p[i+1]+"\n"
             i+=2
-
         self.pnr.text="PNR: "+gg[0]
         self.tx.text="TRAIN: "+gg[1].strip()
         self.fsn.text="FROM: "+gg[5]
@@ -305,6 +317,54 @@ class Book(Screen):
         self.tohead.text=gg[6]
         self.fromst.text=gg[5]
         self.tost.text=gg[7]
+
+    def printpdf(self):
+        try:
+            g = dbt3.get_pass()
+            #g = ast.literal_eval(g)
+
+            pnr,tx,dt,mon,fsc,fsn,tsc,tsn,p = g[0],g[1].strip(),g[2],g[3],g[4],g[5],g[6],g[7],g[8]
+            l = []
+
+            i=0
+            while i<len(p):
+                l.append(p[i]+' - '+p[i+1])
+                i+=2
+            # print(l)
+            textLines = ["PNR: "+pnr,"\n","Train Name: "+tx,"\n","Date: "+dt+" "+mon,"\n","From: "+fsn+" - "+"To: "+tsn,"\n","Passenger: ",l]
+            fileName = 'MyDoc.pdf'
+            documentTitle = 'Ticket'
+            title = 'Ticket'
+
+            pdf = canvas.Canvas(fileName)
+            pdf.drawImage("screen.png",600,810)
+            pdf.setPageSize((600,810))
+            pdf.setTitle(documentTitle)
+
+            pdfmetrics.registerFont(TTFont('LPoppins', "Poppins-Light.ttf"))
+            pdf.setFont('LPoppins', 36)
+            pdf.drawCentredString(300, 750, title)
+
+            pdf.setFillColorRGB(0, 0, 255)
+            pdf.setFont("Courier-Bold", 20)
+
+            pdf.line(40, 730, 550, 730)
+
+            from reportlab.lib import colors
+
+            text = pdf.beginText(40, 680)
+            text.setFont("Courier", 14)
+            text.setFillColor(colors.red)
+            for line in textLines:
+                text.textLines(line)
+
+            pdf.drawText(text)
+
+            pdf.save()
+            subprocess.Popen(['MyDoc.pdf'], shell=True)
+        except IOError:
+            print('The file is already OPENED!')
+        
     
     def git(self):
         chr_options = Options()
@@ -336,8 +396,7 @@ class PnrCheck(Screen):
     passengera= ObjectProperty(None)
     
     
-    def search(self):
-        
+    def search(self):      
         import database2
         importlib.reload(database2)
         from database2 import DataBase2
@@ -400,7 +459,6 @@ class MainWindow1(Screen):
     p_a = ObjectProperty(None)
     passenger = []
     
-
     def on_enter(self, *args):
         he = db1.get_train()
         self.na.text = he
@@ -423,9 +481,11 @@ class MainWindow1(Screen):
         else:
             invalidForm()
         Payment.current = self.passenger
+
     def reset(self):
         self.p_n.text = ""
         self.p_a.text = ""
+
     def git(self):
         chr_options = Options()
         chr_options.add_experimental_option("detach", True)
@@ -440,6 +500,7 @@ class Payment(Screen):
     cvv = ObjectProperty(None)
     cardnum = ObjectProperty(None)
     namea = ObjectProperty(None)
+
     def bookbtn(self):
         if self.valid.text != "" and self.cardnum.text != "" and self.cvv.text != "" and self.valid.text.count("/") == 1 and self.namea.text != "":
             ab = db1.get_data()
@@ -458,7 +519,6 @@ class Payment(Screen):
 class MainScreenManager(ScreenManager):
     pass
 
-
 def invalidLogin():
     d1 = MDDialog(title='Invalid Login',text='Invalid username or password.',radius=[20,20,20,20])                  
     d1.open()
@@ -466,30 +526,38 @@ def invalidLogin():
 def invalidForm():
     d2 = MDDialog(title='Invalid Form',text='Please fill in all inputs with valid information.',radius=[20,20,20,20])
     d2.open()
+
 def norecord():
     d2 = MDDialog(text='No Record Found',radius=[20,20,20,20])
     d2.open()
+
 def notrain():
     d2 = MDDialog(title='Oops!',text='Something went wrong.It may cause due to following errors:\n\u2022Wrong Station names.Try Again!\n\u2022No Trains Found.',radius=[20,20,20,20])
     d2.open()
+
 def invalidStation():
     Snackbar(
     text="Invalid Station! Try Again..",
     snackbar_x="5dp",
     snackbar_y="5dp",
     ).open()
+
 def tryagain():
     d2 = MDDialog(text='Something went Wrong!',radius=[20,20,20,20])
     d2.open()
+
 def signup():
     d2 = MDDialog(text='Signed Up Successfully.',radius=[20,20,20,20])
     d2.open()
+
 def alreadyexists():
     d2 = MDDialog(text='Account already exists\nSign-in to continue!',radius=[20,20,20,20])
     d2.open()
+
 def donotmatch():
     d2 = MDDialog(text='Passwords do not match.',radius=[20,20,20,20])
     d2.open()
+
 def validStation():
     Snackbar(
     text="Valid Station!",
