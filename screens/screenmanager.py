@@ -110,6 +110,7 @@ class LoginScreen3(MDScreen):
     def reset(self):
         self.email.text = ""
         self.password.text = ""
+        self.chpassw.text = ""
         self.namee.text = ""
     def git(self):
         chr_options = Options()

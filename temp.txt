@@ -1,1 +1,1 @@
-['8776', '\n12310  NEW DELHI - RAJENDRA NAGAR T Rajdhani Express\n', '14', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN', ['Asim Sahoo', '18']]
+['8776', '\n12872  TITLAGARH - HOWRAH Ispat SF Express\n', '15', 'Jan', 'KGP', 'KHARAGPUR JN', 'KOAA', 'KOLKATA', ['Asmit', '12', 'Augnick', '18', 'Asim', '17', 'Sagnik', '16', 'Arka', '9']]
