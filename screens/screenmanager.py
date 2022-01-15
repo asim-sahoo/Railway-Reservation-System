@@ -40,7 +40,7 @@ class LoginScreen1(MDScreen):
 class LoginScreen2(MDScreen):
     email = ObjectProperty(None)
     password = ObjectProperty(None)
-
+    toogle = ObjectProperty(None)
     def loginBtn(self):
         if self.email.text != "" and self.password.text != "":
             if db.validate(self.email.text, self.password.text):
@@ -57,6 +57,14 @@ class LoginScreen2(MDScreen):
         self.email.text = ""
         self.password.text = ""
     
+    def tooglevisibility(self):
+        if self.password.password == True:
+            self.toogle.icon = "eye-off"
+            self.password.password = False
+        elif self.password.password == False:
+            self.password.password = True
+            self.toogle.icon = "eye"
+    
     def git(self):
         chr_options = Options()
         chr_options.add_experimental_option("detach", True)
@@ -68,6 +76,8 @@ class LoginScreen3(MDScreen):
     email = ObjectProperty(None)
     password = ObjectProperty(None)
     chpassw = ObjectProperty(None)
+    toogle = ObjectProperty(None)
+    tooglea = ObjectProperty(None)
     def submit(self):
         if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0 and self.password.text != "" and self.chpassw.text != "" :
             if self.chpassw.text == self.password.text:
@@ -83,6 +93,21 @@ class LoginScreen3(MDScreen):
                 donotmatch()
         else:
             invalidForm()
+    def tooglevisibility(self):
+        if self.password.password == True:
+            self.toogle.icon = "eye-off"
+            self.password.password = False
+        elif self.password.password == False:
+            self.password.password = True
+            self.toogle.icon = "eye"
+
+    def tooglevisibilitya(self):
+        if self.chpassw.password == True:
+            self.tooglea.icon = "eye-off"
+            self.chpassw.password = False
+        elif self.chpassw.password == False:
+            self.chpassw.password = True
+            self.tooglea.icon = "eye"
 
     def reset(self):
         self.email.text = ""
