@@ -1,1 +1,1 @@
-['\n12872  TITLAGARH - HOWRAH Ispat SF Express\n', '15', 'Jan', 'KGP', 'KHARAGPUR JN', 'KOAA', 'KOLKATA']
+['\n12310  NEW DELHI - RAJENDRA NAGAR T Rajdhani Express\n', '15', 'Jan', 'NDLS', 'NEW DELHI', 'PNBE', 'PATNA JN']

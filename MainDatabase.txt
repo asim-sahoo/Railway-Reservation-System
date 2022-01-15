@@ -3,4 +3,4 @@
 8772;22202  PURI - KOLKATA SEALDAH Duronto Express;14;Jan;KGP;KHARAGPUR;KOAA;KOLKATA;['fourthtry', '4']
 8773;12838  PURI - HOWRAH SF Express;14;Jan;KGP;KHARAGPUR;KOAA;KOLKATA;['fifthtry', '5']
 8774;18616  HATIA - HOWRAH Kriya Yoga Express;14;Jan;KGP;KHARAGPUR;KOAA;KOLKATA;['sixthtry', '6']
-8775;12514  GUWAHATI - SECUNDERABAD SF Express;14;Jan;KOAA;KOLKATA;KGP;KHARAGPUR;['seventhtry', '7', 'eighttry', '8']
+8775;12310  NEW DELHI - RAJENDRA NAGAR T Rajdhani Express;15;Jan;NDLS;NEW DELHI;PNBE;PATNA JN;['User1', '12', 'Passenger 2', '16', 'Passenger 3', '18']
