@@ -363,7 +363,7 @@ class Book(Screen):
             pdf.save()
             subprocess.Popen(['MyDoc.pdf'], shell=True)
         except IOError:
-            print('The file is already OPENED!')
+            showpdf()
         
     
     def git(self):
@@ -564,8 +564,9 @@ def validStation():
     snackbar_x="5dp",
     snackbar_y="5dp",
     ).open()
-
-
+def showpdf():
+    d2 = MDDialog(text='The file is already OPENED. Try reloading!',radius=[20,20,20,20])
+    d2.open()
 sm = MainScreenManager()
 db = DataBase("users.txt")
 db1 = DataBase1("train.txt")
