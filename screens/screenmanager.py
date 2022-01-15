@@ -8,7 +8,6 @@ from temp import Temp
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
-from kivymd.uix.behaviors import FakeRectangularElevationBehavior
 import requests
 import json
 import ast
@@ -16,7 +15,6 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from bs4 import BeautifulSoup
 from kivymd.uix.snackbar import Snackbar
-from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
 from kivymd.uix.list import OneLineListItem
 import importlib

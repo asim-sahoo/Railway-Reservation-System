@@ -1,6 +1,4 @@
 import os
-from kivymd.uix.screen import Screen
-from kivy.properties import ObjectProperty
 from kivymd.app import MDApp
 from kaki.app import App
 from kivy.factory import Factory

@@ -6,3 +6,4 @@ test@gmail.com;12345;test;2022-01-10
 s@g.c;1;sagnik;2022-01-12
 asim1@gmail.com;12345;asim sahoo;2022-01-14
 a@gmail.com;12345;Asim Sahoo;2022-01-14
+user@gmail.com;12345;User;2022-01-15
